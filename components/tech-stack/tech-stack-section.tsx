@@ -5,51 +5,23 @@ import { NeonChip } from "@/components/neon-chip"
 import { SectionHeader } from "@/components/section-header"
 
 const technologies = [
-  // Frontend
-  { name: "React", color: "cyan" as const },
-  { name: "Next.js", color: "magenta" as const },
-  { name: "TypeScript", color: "violet" as const },
-  { name: "Tailwind CSS", color: "lime" as const },
-  { name: "Framer Motion", color: "cyan" as const },
-  { name: "Three.js", color: "magenta" as const },
-  { name: "React Three Fiber", color: "violet" as const },
-  { name: "shadcn/ui", color: "lime" as const },
+  // Web
+  { name: "JavaScript / HTML / CSS", color: "cyan" as const },
+  { name: "React.js", color: "magenta" as const },
+  { name: "Next.js", color: "violet" as const },
+  { name: "NestJS", color: "lime" as const },
 
   // Backend
-  { name: "Node.js", color: "cyan" as const },
-  { name: "Python", color: "magenta" as const },
-  { name: "FastAPI", color: "violet" as const },
-  { name: "Express", color: "lime" as const },
-  { name: "GraphQL", color: "cyan" as const },
-  { name: "REST APIs", color: "magenta" as const },
+  { name: "Django", color: "cyan" as const },
+  { name: "FastAPI", color: "magenta" as const },
+  { name: "Microservices", color: "violet" as const },
+  { name: "NoSQL / SQL", color: "lime" as const },
 
-  // AI/ML
-  { name: "TensorFlow", color: "violet" as const },
-  { name: "PyTorch", color: "lime" as const },
-  { name: "OpenAI", color: "cyan" as const },
-  { name: "Hugging Face", color: "magenta" as const },
-  { name: "LangChain", color: "violet" as const },
-  { name: "Stable Diffusion", color: "lime" as const },
-
-  // Database
-  { name: "PostgreSQL", color: "cyan" as const },
-  { name: "MongoDB", color: "magenta" as const },
-  { name: "Redis", color: "violet" as const },
-  { name: "Supabase", color: "lime" as const },
-  { name: "Prisma", color: "cyan" as const },
-
-  // DevOps
-  { name: "Docker", color: "magenta" as const },
-  { name: "Kubernetes", color: "violet" as const },
-  { name: "AWS", color: "lime" as const },
-  { name: "Vercel", color: "cyan" as const },
-  { name: "GitHub Actions", color: "magenta" as const },
-
-  // Tools
-  { name: "Git", color: "violet" as const },
-  { name: "VS Code", color: "lime" as const },
-  { name: "Figma", color: "cyan" as const },
-  { name: "Postman", color: "magenta" as const },
+  // Data/ML
+  { name: "Data Cleaning & Preprocessing", color: "cyan" as const },
+  { name: "Feature Engineering", color: "magenta" as const },
+  { name: "NumPy, Pandas, Scikit-Learn", color: "violet" as const },
+  { name: "Machine Learning & Model Evaluation", color: "lime" as const },
 ]
 
 export function TechStackSection() {
