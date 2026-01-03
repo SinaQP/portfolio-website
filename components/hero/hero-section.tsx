@@ -74,7 +74,14 @@ export function HeroSection() {
                 <Github className="w-5 h-5 mr-2 inline-block group-hover:rotate-12 transition-transform" />
                 GitHub
               </NeonButton>
-              <NeonButton variant="magenta" size="lg" className="group">
+              <NeonButton
+                variant="magenta"
+                size="lg"
+                className="group"
+                onClick={() =>
+                  window.open("https://www.linkedin.com/in/sina-qasempour-8967b2264/", "_blank", "noopener,noreferrer")
+                }
+              >
                 <Linkedin className="w-5 h-5 mr-2 inline-block group-hover:scale-110 transition-transform" />
                 LinkedIn
               </NeonButton>

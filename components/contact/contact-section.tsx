@@ -48,7 +48,7 @@ export function ContactSection() {
 
           <div className="flex gap-6 justify-center">
             <motion.a
-              href="https://linkedin.com/in/sinaqasempour"
+              href="https://www.linkedin.com/in/sina-qasempour-8967b2264/"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1 }}
