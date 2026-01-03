@@ -1,0 +1,44 @@
+[
+  {
+    "id": "1",
+    "src": "/conference-presentation-tech-talk.jpg",
+    "alt": "Speaking at tech conference",
+    "width": 800,
+    "height": 600
+  },
+  {
+    "id": "2",
+    "src": "/workspace-coding-setup.jpg",
+    "alt": "Development workspace",
+    "width": 600,
+    "height": 800
+  },
+  {
+    "id": "3",
+    "src": "/team-collaboration-whiteboard.jpg",
+    "alt": "Team brainstorming session",
+    "width": 800,
+    "height": 600
+  },
+  {
+    "id": "4",
+    "src": "/hackathon-award-ceremony.jpg",
+    "alt": "Winning hackathon award",
+    "width": 600,
+    "height": 800
+  },
+  {
+    "id": "5",
+    "src": "/workshop-teaching-students.jpg",
+    "alt": "Teaching AI workshop",
+    "width": 800,
+    "height": 600
+  },
+  {
+    "id": "6",
+    "src": "/prototype-demo-exhibition.jpg",
+    "alt": "Demoing prototype at exhibition",
+    "width": 600,
+    "height": 800
+  }
+]
