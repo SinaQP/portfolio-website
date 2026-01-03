@@ -66,7 +66,7 @@ export function ProjectCard({ title, image, tags, onClick, glowColor = "cyan" }:
 
       {/* Content */}
       <div className="p-6 space-y-4">
-        <h3 className="text-2xl font-bold font-mono text-foreground group-hover:text-neon-cyan transition-colors">
+        <h3 className="text-2xl md:text-3xl font-bold font-mono tracking-tight leading-tight text-foreground group-hover:text-neon-cyan transition-colors text-balance">
           {title}
         </h3>
 

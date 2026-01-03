@@ -52,7 +52,9 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           {/* Content */}
           <div className="p-8 space-y-6">
             {/* Title */}
-            <h2 className="text-4xl font-bold font-mono text-neon-cyan text-glow-cyan">{project.title}</h2>
+            <h2 className="text-4xl md:text-5xl font-bold font-mono tracking-tight leading-tight text-neon-cyan text-glow-cyan text-balance">
+              {project.title}
+            </h2>
 
             {/* Tags */}
             <div className="flex flex-wrap gap-2">
