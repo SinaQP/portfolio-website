@@ -24,10 +24,9 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan/10 via-neon-violet/10 to-neon-magenta/10" />
           <div className="container mx-auto px-4 relative z-10">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-balance">
-              <span className="text-neon-cyan">Building</span>{" "}
-              <span className="text-neon-magenta">intelligent systems</span>{" "}
-              <span className="text-neon-violet">that augment</span>{" "}
-              <span className="text-neon-lime">human creativity</span>
+              <span className="bg-gradient-to-r from-neon-cyan to-neon-magenta text-transparent bg-clip-text">
+                We don&apos;t build tools. We forge reality.
+              </span>
             </h2>
           </div>
         </section>
