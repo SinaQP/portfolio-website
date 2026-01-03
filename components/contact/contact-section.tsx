@@ -26,7 +26,11 @@ export function ContactSection() {
           </p>
 
           <div className="flex flex-wrap gap-4 justify-center mb-12">
-            <NeonButton color="cyan" size="lg" onClick={() => (window.location.href = "mailto:sina@example.com")}>
+            <NeonButton
+              color="cyan"
+              size="lg"
+              onClick={() => (window.location.href = "mailto:qasempoursina@gmail.com")}
+            >
               <Mail className="w-5 h-5" />
               Get In Touch
             </NeonButton>

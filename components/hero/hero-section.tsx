@@ -78,7 +78,12 @@ export function HeroSection() {
                 <Linkedin className="w-5 h-5 mr-2 inline-block group-hover:scale-110 transition-transform" />
                 LinkedIn
               </NeonButton>
-              <NeonButton variant="violet" size="lg" className="group">
+              <NeonButton
+                variant="violet"
+                size="lg"
+                className="group"
+                onClick={() => (window.location.href = "mailto:qasempoursina@gmail.com")}
+              >
                 <Mail className="w-5 h-5 mr-2 inline-block group-hover:scale-110 transition-transform" />
                 Contact
               </NeonButton>
