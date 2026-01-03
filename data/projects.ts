@@ -35,8 +35,20 @@ export const projects: Project[] = [
       { label: "AI Content Generation", variant: "magenta" },
       { label: "Store Analytics", variant: "cyan" },
     ],
-    glowColor: "lime",
+    glowColor: "magenta",
     description:
       "An AI-driven retail intelligence and content generation system for shops and stores.",
+  },
+  {
+    id: "zaraamad",
+    title: "Zaraamad",
+    image: "/Zaraamad-project.png",
+    tags: [
+      { label: "Municipal Fees", variant: "lime" },
+      { label: "Revenue Analytics", variant: "magenta" },
+      { label: "Registration Automation", variant: "cyan" },
+    ],
+    glowColor: "lime",
+    description: "A municipal fee registration and revenue analytics system.",
   },
 ]
