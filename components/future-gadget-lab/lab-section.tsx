@@ -136,10 +136,10 @@ export function FutureGadgetLabSection() {
           className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto"
         >
           {[
-            { label: "Active Experiments", value: "12", color: "cyan" },
-            { label: "Research Papers", value: "8", color: "magenta" },
-            { label: "Prototypes", value: "24", color: "violet" },
-            { label: "Collaborations", value: "6", color: "lime" },
+            { label: "Active Experiments", value: "0", color: "cyan" },
+            { label: "Research Papers", value: "0", color: "magenta" },
+            { label: "Prototypes", value: "0", color: "violet" },
+            { label: "Collaborations", value: "0", color: "lime" },
           ].map((stat, index) => (
             <motion.div
               key={index}
