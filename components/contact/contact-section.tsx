@@ -35,7 +35,7 @@ export function ContactSection() {
               color="magenta"
               variant="outline"
               size="lg"
-              onClick={() => window.open("https://github.com/sinaqasempour", "_blank")}
+              onClick={() => window.open("https://github.com/SinaQP", "_blank", "noopener,noreferrer")}
             >
               <Github className="w-5 h-5" />
               View GitHub

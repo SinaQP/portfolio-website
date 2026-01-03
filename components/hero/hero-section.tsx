@@ -31,8 +31,7 @@ export function HeroSection() {
                 className="text-6xl md:text-7xl lg:text-8xl font-bold font-mono uppercase leading-none"
               >
                 <span className="block text-neon-cyan text-glow-cyan">SINA</span>
-                <span className="block text-neon-magenta text-glow-magenta">QASEM</span>
-                <span className="block text-neon-violet text-glow-violet">POUR</span>
+                <span className="block text-neon-magenta text-glow-magenta">QASEMPOUR</span>
               </motion.h1>
             </div>
 
@@ -66,7 +65,12 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.8 }}
               className="flex flex-wrap gap-4"
             >
-              <NeonButton variant="cyan" size="lg" className="group">
+              <NeonButton
+                variant="cyan"
+                size="lg"
+                className="group"
+                onClick={() => window.open("https://github.com/SinaQP", "_blank", "noopener,noreferrer")}
+              >
                 <Github className="w-5 h-5 mr-2 inline-block group-hover:rotate-12 transition-transform" />
                 GitHub
               </NeonButton>
@@ -109,13 +113,13 @@ export function HeroSection() {
                     repeat: Number.POSITIVE_INFINITY,
                     ease: "easeInOut",
                   }}
-                  className="relative w-64 h-64 md:w-80 md:h-80"
+                  className="relative w-[19.2rem] h-[19.2rem] md:w-[24rem] md:h-[24rem]"
                 >
                   <div className="absolute inset-0 rounded-full bg-gradient-to-br from-neon-cyan/20 via-neon-violet/20 to-neon-magenta/20 blur-2xl" />
                   <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-neon-cyan/50 shadow-[0_0_40px_rgba(0,240,255,0.5)]">
                     <Image
-                      src="/professional-portrait.png"
-                      alt="Sina Qasempour"
+                      src="/profile-picture.png"
+                      alt="Profile picture"
                       fill
                       className="object-cover"
                       priority

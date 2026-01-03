@@ -110,7 +110,10 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 </NeonButton>
               )}
               {project.githubUrl && (
-                <NeonButton variant="magenta">
+                <NeonButton
+                  variant="magenta"
+                  onClick={() => window.open(project.githubUrl, "_blank", "noopener,noreferrer")}
+                >
                   <Github className="w-4 h-4 mr-2" />
                   Source Code
                 </NeonButton>

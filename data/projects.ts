@@ -33,7 +33,7 @@ export const projects: Project[] = [
     ],
     techStack: ["Python", "TensorFlow", "Transformers", "React", "TypeScript", "WebRTC", "FastAPI"],
     liveUrl: "https://kristina-ai.example.com",
-    githubUrl: "https://github.com/sina/kristina-ai",
+    githubUrl: "https://github.com/SinaQP",
   },
   {
     id: "neural-canvas",
@@ -75,7 +75,7 @@ export const projects: Project[] = [
       "Educational tutorials and challenges",
     ],
     techStack: ["Python", "Qiskit", "NumPy", "React", "D3.js"],
-    githubUrl: "https://github.com/sina/quantum-sim",
+    githubUrl: "https://github.com/SinaQP",
   },
   {
     id: "voice-morph",
@@ -117,7 +117,7 @@ export const projects: Project[] = [
       "Export simulation data",
     ],
     techStack: ["Three.js", "TypeScript", "WebGL", "Web Workers"],
-    githubUrl: "https://github.com/sina/swarm-viz",
+    githubUrl: "https://github.com/SinaQP",
   },
   {
     id: "neuro-music",

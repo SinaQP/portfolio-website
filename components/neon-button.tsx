@@ -37,7 +37,7 @@ const NeonButton = forwardRef<HTMLButtonElement, NeonButtonProps>(
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         className={cn(
-          "relative font-mono font-semibold uppercase tracking-wider",
+          "relative font-[var(--font-cta)] font-semibold uppercase tracking-wider",
           "border-2 rounded-lg backdrop-blur-sm",
           "transition-all duration-300",
           "disabled:opacity-50 disabled:cursor-not-allowed",
