@@ -51,4 +51,16 @@ export const projects: Project[] = [
     glowColor: "lime",
     description: "A municipal fee registration and revenue analytics system.",
   },
+  {
+    id: "zarvand",
+    title: "Zarvand",
+    image: "/Zarvand-project.png",
+    tags: [
+      { label: "Citizen Services", variant: "lime" },
+      { label: "Smart City", variant: "magenta" },
+      { label: "Data Analytics", variant: "cyan" },
+    ],
+    glowColor: "lime",
+    description: "Smart city citizen services powered by citizen data and analytics.",
+  },
 ]
