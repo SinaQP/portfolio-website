@@ -75,7 +75,6 @@ export function StatsSection() {
           <Stat value={38} label="Projects Built" suffix="+" color="cyan" />
           <Stat value={15} label="Technologies" suffix="+" color="magenta" />
           <Stat value={5} label="Years Experience" suffix="+" color="violet" />
-          <Stat value={0} label="Commits This Month" color="lime" />
         </div>
       </div>
     </section>
