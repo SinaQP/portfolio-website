@@ -9,7 +9,7 @@ const siteTitle = "Sina Qasempour | AI Engineer & Creative Developer"
 const siteDescription =
   "Portfolio of Sina Qasempour - AI Engineer specializing in intelligent systems, creative coding, and experimental interfaces."
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || process.env.VERCEL_URL || "http://localhost:3000"
+  process.env.NEXT_PUBLIC_SITE_URL || process.env.VERCEL_URL || "https://sina-qasempour-portfolio-website.vercel.app"
 const siteUrlWithProtocol = siteUrl.startsWith("http") ? siteUrl : `https://${siteUrl}`
 
 const inter = Inter({
