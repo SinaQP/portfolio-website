@@ -72,9 +72,9 @@ export function StatsSection() {
     <section className="relative py-20 px-6 border-y border-white/5">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
-          <Stat value={0} label="Projects Built" color="cyan" />
-          <Stat value={0} label="Technologies" color="magenta" />
-          <Stat value={0} label="Years Experience" color="violet" />
+          <Stat value={38} label="Projects Built" suffix="+" color="cyan" />
+          <Stat value={15} label="Technologies" suffix="+" color="magenta" />
+          <Stat value={5} label="Years Experience" suffix="+" color="violet" />
           <Stat value={0} label="Commits This Month" color="lime" />
         </div>
       </div>

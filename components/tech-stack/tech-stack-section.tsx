@@ -20,7 +20,9 @@ const technologies = [
   // Data/ML
   { name: "Data Cleaning & Preprocessing", color: "cyan" as const },
   { name: "Feature Engineering", color: "magenta" as const },
-  { name: "NumPy, Pandas, Scikit-Learn", color: "violet" as const },
+  { name: "NumPy", color: "violet" as const },
+  { name: "Pandas", color: "violet" as const },
+  { name: "Scikit-Learn", color: "violet" as const },
   { name: "Machine Learning & Model Evaluation", color: "lime" as const },
 ]
 
