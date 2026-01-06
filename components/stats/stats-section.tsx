@@ -57,9 +57,9 @@ function Stat({ value, label, suffix = "", color }: StatProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="text-center"
+      className="text-center px-10 py-6"
     >
-      <div className={`text-6xl md:text-7xl font-bold mb-2 ${glowColors[color]}`}>
+      <div className={`text-6xl md:text-7xl px-10 font-bold mb-2 ${glowColors[color]}`}>
         <AnimatedCounter value={value} suffix={suffix} color={color} />
       </div>
       <div className="text-gray-400 text-sm uppercase tracking-wider">{label}</div>

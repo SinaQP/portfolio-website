@@ -72,7 +72,7 @@ export const projects: Project[] = [
       { label: "Mining Operations", variant: "magenta" },
       { label: "Lifecycle Monitoring", variant: "cyan" },
     ],
-    glowColor: "lime",
+    glowColor: "cyan",
     description:
       "Project Tairban is a fleet tire management platform for large mining vehicles. It tracks tire conditions and logs inspections, maintenance, replacements, and incidents over time. The goal is a clear big-picture view of trucks and their tires to make lifecycle monitoring and decisions faster and more reliable.",
     features: [
