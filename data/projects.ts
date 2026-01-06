@@ -63,4 +63,22 @@ export const projects: Project[] = [
     glowColor: "lime",
     description: "Smart city citizen services powered by citizen data and analytics.",
   },
+  {
+    id: "tairban",
+    title: "Tairban",
+    image: "/Tierban-project.png",
+    tags: [
+      { label: "Fleet Tire Management", variant: "lime" },
+      { label: "Mining Operations", variant: "magenta" },
+      { label: "Lifecycle Monitoring", variant: "cyan" },
+    ],
+    glowColor: "lime",
+    description:
+      "Project Tairban is a fleet tire management platform for large mining vehicles. It tracks tire conditions and logs inspections, maintenance, replacements, and incidents over time. The goal is a clear big-picture view of trucks and their tires to make lifecycle monitoring and decisions faster and more reliable.",
+    features: [
+      "Condition tracking with inspection history",
+      "Maintenance, replacement, and incident timelines",
+      "Fleet-level lifecycle visibility for mining vehicles",
+    ],
+  },
 ]
