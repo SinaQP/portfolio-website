@@ -71,7 +71,7 @@ export function StatsSection() {
   return (
     <section className="relative py-20 px-6 border-y border-white/5">
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
+        <div className="flex flex-wrap justify-center gap-12">
           <Stat value={38} label="Projects Built" suffix="+" color="cyan" />
           <Stat value={15} label="Technologies" suffix="+" color="magenta" />
           <Stat value={5} label="Years Experience" suffix="+" color="violet" />
