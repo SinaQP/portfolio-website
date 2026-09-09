@@ -1,11 +1,26 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  typescript: {
-    ignoreBuildErrors: true,
+  poweredByHeader: false,
+  async redirects() {
+    return [
+      {
+        source: "/work/svm-vs-qsvm",
+        destination: "/research/svm-vs-qsvm",
+        permanent: true,
+      },
+    ];
   },
-  images: {
-    unoptimized: true,
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "X-Frame-Options", value: "DENY" },
+        ],
+      },
+    ];
   },
-}
-
-export default nextConfig
+};
+export default nextConfig;

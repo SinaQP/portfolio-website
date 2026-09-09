@@ -1,88 +1,114 @@
-import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata } from "next";
+import { Inter, IBM_Plex_Mono } from "next/font/google";
+import { Header } from "@/components/engineering/header";
+import { Contact } from "@/components/engineering/contact";
+import {
+  MotionProvider,
+  ScrollProgress,
+} from "@/components/engineering/motion";
+import { profile } from "@/data/profile";
+import { siteUrl } from "@/lib/metadata";
+import "./globals.css";
 
-import { Analytics } from "@vercel/analytics/next"
-import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google"
-import "./globals.css"
-
-const siteTitle = "Sina Qasempour | AI Engineer & Creative Developer"
-const siteDescription =
-  "Portfolio of Sina Qasempour - AI Engineer specializing in intelligent systems, creative coding, and experimental interfaces."
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || process.env.VERCEL_URL || "https://sina-qasempour-portfolio-website.vercel.app"
-const siteUrlWithProtocol = siteUrl.startsWith("http") ? siteUrl : `https://${siteUrl}`
-
-const inter = Inter({
+const sans = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-})
-
-const jetbrainsMono = JetBrains_Mono({
+  display: "swap",
+});
+const mono = IBM_Plex_Mono({
   subsets: ["latin"],
-  variable: "--font-jetbrains",
-})
+  weight: ["400", "500"],
+  variable: "--font-plex",
+  display: "swap",
+});
+const description =
+  "Sina Qasempour is a Software Engineer with approximately six years building backend systems, enterprise applications, and production software, while exploring Quantum Computing.";
 
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-cta",
-  weight: ["500", "600", "700"],
-})
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrlWithProtocol),
+  metadataBase: siteUrl,
   title: {
-    default: siteTitle,
+    default: "Sina Qasempour | Software Engineer",
     template: "%s | Sina Qasempour",
   },
-  description: siteDescription,
-  generator: "v0.app",
-  keywords: ["AI Engineer", "Machine Learning", "Creative Developer", "Portfolio", "Sina Qasempour"],
-  authors: [{ name: "Sina Qasempour", url: siteUrlWithProtocol }],
-  alternates: {
-    canonical: "/",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1,
-    },
-  },
+  description,
+  applicationName: "Sina Qasempour — Engineering & Computing",
+  authors: [{ name: profile.name, url: siteUrl.href }],
+  keywords: [
+    "Sina Qasempour Software Engineer",
+    "Software Engineer Quantum Computing",
+    "Backend Engineer",
+    "Systems Engineer",
+    "Python",
+    "Django",
+    "System Design",
+  ],
+  alternates: { canonical: "/" },
+  robots: { index: true, follow: true },
   openGraph: {
-    title: siteTitle,
-    description: siteDescription,
+    title: "Sina Qasempour | Software Engineer",
+    description,
     url: "/",
-    siteName: "Sina Qasempour",
+    siteName: profile.name,
     type: "website",
+    locale: "en_US",
     images: [
       {
-        url: "/profile-picture.png",
-        alt: "Sina Qasempour",
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Sina Qasempour — Software Engineer. Systems & Computing.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: siteTitle,
-    description: siteDescription,
-    images: ["/profile-picture.png"],
+    title: "Sina Qasempour | Software Engineer",
+    description,
+    images: ["/opengraph-image"],
   },
-}
+};
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+}: {
+  children: React.ReactNode;
+}) {
+  const person = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: profile.name,
+    jobTitle: profile.role,
+    url: siteUrl.href,
+    image: new URL("/profile-picture.png", siteUrl).href,
+    sameAs: [profile.github, profile.linkedin],
+    knowsAbout: [
+      "Software Engineering",
+      "Backend Engineering",
+      "System Design",
+      "Database Architecture",
+      "Quantum Computing",
+    ],
+    description,
+  };
   return (
-    <html lang="en" className="dark">
-      <body className={`${inter.className} ${jetbrainsMono.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
-        {children}
-        <Analytics />
+    <html lang="en" id="top" className={`${sans.variable} ${mono.variable}`}>
+      <body>
+        <a className="skip-link" href="#main-content">
+          Skip to content
+        </a>
+        <MotionProvider>
+          <ScrollProgress />
+          <Header />
+          <main id="main-content">{children}</main>
+          <Contact />
+        </MotionProvider>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(person).replace(/</g, "\\u003c"),
+          }}
+        />
       </body>
     </html>
-  )
+  );
 }
