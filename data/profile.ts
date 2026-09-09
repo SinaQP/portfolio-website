@@ -13,15 +13,15 @@ export const profile = {
     "Six years of turning technical problems into working systems — across production software, startup leadership, and current exploration in Quantum Computing.",
   source: "User brief; résumé; user positioning update, September 2026",
   about: {
-    lead: "I learned engineering by building things that had to work.",
+    summary: "I build real-world systems and explore the ideas beneath them. Six years in software, enterprise platforms, and startup leadership have shaped my practice. Today, that curiosity also leads me into Quantum Computing.",
+    lead: "Built Through Practice. Driven by Curiosity.",
     paragraphs: [
-      "Software was my starting point. Over roughly six years, the work expanded from individual features to the relationships between services, data, people, and decisions. The interesting question became how the whole system behaves.",
-      "Enterprise platforms taught me to work with existing constraints. Danobin brought startup responsibility as CTO, alongside hands-on engineering. These experiences connect implementation to a wider concern: understanding a problem well enough to take ownership of it.",
-      "I approach unfamiliar systems by following their boundaries: where information enters, how it changes, and what happens when an assumption fails. Building a small, inspectable version is often how I begin to understand a larger problem.",
-      "That curiosity now reaches further into computation. Data processing and machine learning provide a foundation; Quantum Computing raises different questions about representing information and approaching difficult problems. My current experiments are a way to study those questions carefully.",
+      "Software was the starting point. Over roughly six years, my work expanded from implementing features into understanding complete systems — their architecture, data flows, operational boundaries, and failure modes. Enterprise platforms taught me engineering under real-world constraints.",
+      "Serving as CTO at Danobin widened that technical responsibility from implementation to architectural ownership and broader decision-making. Alongside hands-on delivery, engineering became about defining reliable boundaries and anticipating how components behave in production.",
+      "Beyond immediate production requirements, I invest continuous study into advanced computation and Quantum Computing. Whether analyzing algorithmic complexity, statevector simulations, or classical versus quantum kernels, curiosity drives me to understand what happens beneath standard abstractions.",
     ],
     closing:
-      "The direction is deeper understanding, through building and experimentation.",
+      "The direction is deeper understanding — grounded in production engineering, proven through practice, and expanded through study.",
     principles: [
       {
         title: "Understand the system.",

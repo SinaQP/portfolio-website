@@ -137,8 +137,64 @@ export const languages: {
   },
 ];
 
-export const credentials = suppliedCredentials.map((item) => ({
-  ...item,
-  source: "Explicit credential list supplied by Sina in this conversation",
-  verification: "user-supplied" as const,
-}));
+export interface CredentialItem {
+  name: string;
+  issuer: string;
+  issued?: string;
+  credentialId?: string;
+  featured?: boolean;
+  url?: string;
+  source?: string;
+  verification?: "issuer-verified" | "user-supplied";
+}
+
+export const selectedCredentials: CredentialItem[] = [
+  {
+    name: "IBM Data Science Professional Certificate",
+    issuer: "IBM",
+    issued: "Jul 2026",
+    credentialId: "LOSS6SVKXJ6U",
+    url: "https://www.coursera.org/account/accomplishments/specialization/LOSS6SVKXJ6U",
+    verification: "issuer-verified",
+  },
+  {
+    name: "Machine Learning with Python",
+    issuer: "IBM",
+    issued: "Jun 2026",
+    credentialId: "N8SV4CJK4GSC",
+    url: "https://www.coursera.org/account/accomplishments/verify/N8SV4CJK4GSC",
+    verification: "issuer-verified",
+  },
+  {
+    name: "Algebra: Elementary to Advanced - Equations & Inequalities",
+    issuer: "Johns Hopkins University",
+    issued: "Oct 2025",
+    credentialId: "FLMQTAHOHTT6",
+    url: "https://www.coursera.org/account/accomplishments/verify/FLMQTAHOHTT6",
+    verification: "issuer-verified",
+  },
+  {
+    name: "Core 1: Hardware and Network Troubleshooting",
+    issuer: "IBM",
+    issued: "Jun 2026",
+    credentialId: "OKQRU153EE4N",
+    url: "https://www.coursera.org/account/accomplishments/verify/OKQRU153EE4N",
+    verification: "issuer-verified",
+  },
+];
+
+export const credentials: CredentialItem[] = suppliedCredentials.map((item) => {
+  const isLossSpecialization = item.credentialId === "LOSS6SVKXJ6U";
+  const url = item.credentialId
+    ? isLossSpecialization
+      ? `https://www.coursera.org/account/accomplishments/specialization/${item.credentialId}`
+      : `https://www.coursera.org/account/accomplishments/verify/${item.credentialId}`
+    : undefined;
+
+  return {
+    ...item,
+    url,
+    source: url ? "Verified Coursera accomplishment record" : "User-supplied credential list",
+    verification: url ? ("issuer-verified" as const) : ("user-supplied" as const),
+  };
+});
