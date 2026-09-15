@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+body:has(.presentation-page) {
+  overflow: hidden;
+}
+body:has(.presentation-page) > .skip-link,
+body:has(.presentation-page) .site-header,
+body:has(.presentation-page) .site-footer,
+body:has(.presentation-page) .scroll-progress {
+  display: none;
+}
+
 @theme inline {
   --color-background: #101214;
   --color-foreground: #efefea;

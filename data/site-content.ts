@@ -3,6 +3,7 @@ export const siteContent = {
   navigation: [
     { label: "Work", href: "/work" },
     { label: "Research", href: "/research" },
+    { label: "Presentation", href: "/presentation" },
     { label: "About", href: "/about" },
   ],
   hero: {

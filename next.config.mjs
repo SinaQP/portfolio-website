@@ -8,6 +8,11 @@ const nextConfig = {
         destination: "/research/svm-vs-qsvm",
         permanent: true,
       },
+      {
+        source: "/Peresentioan",
+        destination: "/presentation",
+        permanent: true,
+      },
     ];
   },
   async headers() {

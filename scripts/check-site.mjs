@@ -17,6 +17,7 @@ const routes = [
   "/",
   "/about",
   "/research",
+  "/presentation",
   "/work",
   "/work/rahtal",
   "/work/danobin",
@@ -245,6 +246,7 @@ async function main() {
     ["/lab", "/research"],
     ["/open-source", "/work#open-source"],
     ["/work/svm-vs-qsvm", "/research/svm-vs-qsvm"],
+    ["/Peresentioan", "/presentation"],
   ]) {
     const response = await request(oldPath, 308);
     assert.equal(
