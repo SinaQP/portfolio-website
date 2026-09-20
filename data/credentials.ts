@@ -14,7 +14,7 @@ const suppliedCredentials: {
     featured: true,
   },
   {
-    name: "IBM Data Science",
+    name: "IBM Data Science Professional Certificate",
     issuer: "IBM",
     issued: "Jul 2026",
     credentialId: "LOSS6SVKXJ6U",
@@ -122,18 +122,27 @@ const suppliedCredentials: {
 
 export const languages: {
   name: string;
+  nameFa: string;
   proficiency: string;
+  proficiencyFa: string;
   detail: string;
+  detailFa: string;
 }[] = [
   {
     name: "English",
+    nameFa: "انگلیسی",
     proficiency: "Professional working proficiency",
+    proficiencyFa: "سطح حرفه‌ای برای کار",
     detail: "Duolingo score 129 · Jul 2026",
+    detailFa: "امتیاز دولینگو ۱۲۹ · ژوئیهٔ ۲۰۲۶",
   },
   {
     name: "Japanese",
+    nameFa: "ژاپنی",
     proficiency: "Elementary proficiency",
+    proficiencyFa: "سطح مقدماتی",
     detail: "Duolingo score 11 · Jul 2026",
+    detailFa: "امتیاز دولینگو ۱۱ · ژوئیهٔ ۲۰۲۶",
   },
 ];
 
@@ -147,41 +156,6 @@ export interface CredentialItem {
   source?: string;
   verification?: "issuer-verified" | "user-supplied";
 }
-
-export const selectedCredentials: CredentialItem[] = [
-  {
-    name: "IBM Data Science Professional Certificate",
-    issuer: "IBM",
-    issued: "Jul 2026",
-    credentialId: "LOSS6SVKXJ6U",
-    url: "https://www.coursera.org/account/accomplishments/specialization/LOSS6SVKXJ6U",
-    verification: "issuer-verified",
-  },
-  {
-    name: "Machine Learning with Python",
-    issuer: "IBM",
-    issued: "Jun 2026",
-    credentialId: "N8SV4CJK4GSC",
-    url: "https://www.coursera.org/account/accomplishments/verify/N8SV4CJK4GSC",
-    verification: "issuer-verified",
-  },
-  {
-    name: "Algebra: Elementary to Advanced - Equations & Inequalities",
-    issuer: "Johns Hopkins University",
-    issued: "Oct 2025",
-    credentialId: "FLMQTAHOHTT6",
-    url: "https://www.coursera.org/account/accomplishments/verify/FLMQTAHOHTT6",
-    verification: "issuer-verified",
-  },
-  {
-    name: "Core 1: Hardware and Network Troubleshooting",
-    issuer: "IBM",
-    issued: "Jun 2026",
-    credentialId: "OKQRU153EE4N",
-    url: "https://www.coursera.org/account/accomplishments/verify/OKQRU153EE4N",
-    verification: "issuer-verified",
-  },
-];
 
 export const credentials: CredentialItem[] = suppliedCredentials.map((item) => {
   const isLossSpecialization = item.credentialId === "LOSS6SVKXJ6U";
@@ -198,3 +172,32 @@ export const credentials: CredentialItem[] = suppliedCredentials.map((item) => {
     verification: url ? ("issuer-verified" as const) : ("user-supplied" as const),
   };
 });
+
+export const verifiedCredentials = credentials.filter(
+  (item) => item.verification === "issuer-verified",
+);
+
+const presentationCredentialNames = [
+  "IBM Data Science Professional Certificate",
+  "EF SET English Certificate 72/100 (C2 Proficient)",
+] as const;
+
+export const selectedCredentials = presentationCredentialNames.map((name) => {
+  const credential = credentials.find((item) => item.name === name);
+  if (!credential) throw new Error(`Missing featured credential: ${name}`);
+  return credential;
+});
+
+export const credentialStats = {
+  verifiedCount: verifiedCredentials.length,
+  totalRecordedCount: credentials.length,
+  verifiedAt: "2026-09-15",
+  methodology:
+    "Counts credential records with a Coursera accomplishment URL and credential ID. The EF SET record remains listed on the portfolio but is not included in the verified count because no verification URL is stored.",
+} as const;
+
+export function credentialIssuerMark(issuer: string) {
+  if (issuer === "IBM") return "IBM";
+  if (issuer === "Johns Hopkins University") return "JHU";
+  return issuer;
+}

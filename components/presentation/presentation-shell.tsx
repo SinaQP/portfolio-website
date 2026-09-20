@@ -3,13 +3,47 @@
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Expand, Grid2X2, Minimize2, X } from "lucide-react";
-import { presentationChapters, presentationSlides } from "@/data/presentation";
+import { presentationChapters, presentationSlides, type PresentationSlideId } from "@/data/presentation";
+import {
+  presentationChaptersFa,
+  presentationChromeFa,
+  presentationSlidesFa,
+  toPersianDigits,
+} from "@/data/presentation.fa";
 import { PresentationSlides } from "./presentation-slides";
+import { PresentationSlidesFa } from "./presentation-slides-fa";
 import styles from "./presentation.module.css";
 
 const transitionLockMs = 760;
 
-export function PresentationShell() {
+const legacySlideHashes: Record<string, PresentationSlideId> = {
+  journey: "zaravand",
+  foundations: "iranslice",
+  "along-the-way": "systems",
+};
+
+const presentationChromeEn = {
+  skip: "Skip to presentation controls",
+  returnToPortfolio: "Return to portfolio",
+  enterMode: "Enter presentation mode",
+  exitMode: "Exit presentation",
+  controls: "Presentation controls",
+  previous: "Previous slide",
+  next: "Next slide",
+  openOverview: "Open slide overview",
+  closeOverview: "Close slide overview",
+  overviewKicker: "DECK INDEX",
+  overviewTitle: "The engineering journey.",
+  slide: "Slide",
+  of: "of",
+  keyboardHint: "← → navigate  ·  O overview  ·  Esc exit",
+};
+
+export function PresentationShell({ locale = "en" }: { locale?: "en" | "fa" }) {
+  const isFa = locale === "fa";
+  const localizedSlides = isFa ? presentationSlidesFa : presentationSlides;
+  const localizedChapters = isFa ? presentationChaptersFa : presentationChapters;
+  const chrome = isFa ? presentationChromeFa : presentationChromeEn;
   const [activeIndex, setActiveIndex] = useState(0);
   const [overviewOpen, setOverviewOpen] = useState(false);
   const [presentationMode, setPresentationMode] = useState(false);
@@ -22,9 +56,13 @@ export function PresentationShell() {
   const idleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const syncFromHash = useCallback(() => {
-    const id = window.location.hash.slice(1);
+    const requestedId = window.location.hash.slice(1);
+    const id = legacySlideHashes[requestedId] ?? requestedId;
     const index = presentationSlides.findIndex((slide) => slide.id === id);
-    if (index >= 0) setActiveIndex(index);
+    if (index >= 0) {
+      if (id !== requestedId) window.history.replaceState(null, "", `#${id}`);
+      setActiveIndex(index);
+    }
   }, []);
 
   const navigate = useCallback((nextIndex: number, historyMode: "push" | "replace" = "push") => {
@@ -37,14 +75,8 @@ export function PresentationShell() {
   }, []);
 
   const step = useCallback((direction: 1 | -1) => {
-    setActiveIndex((current) => {
-      const next = Math.max(0, Math.min(presentationSlides.length - 1, current + direction));
-      if (next !== current) {
-        window.history.pushState(null, "", `#${presentationSlides[next].id}`);
-      }
-      return next;
-    });
-  }, []);
+    navigate(activeIndex + direction);
+  }, [activeIndex, navigate]);
 
   const showControls = useCallback(() => {
     setIdle(false);
@@ -157,12 +189,17 @@ export function PresentationShell() {
     };
   }, []);
 
-  const current = presentationSlides[activeIndex];
+  const current = localizedSlides[activeIndex];
+  const formatNumber = (value: number) => isFa
+    ? toPersianDigits(String(value).padStart(2, "0"))
+    : String(value).padStart(2, "0");
 
   return (
     <div
       ref={root}
-      className={`${styles.presentation} ${ready ? styles.ready : styles.initializing} ${presentationMode ? styles.presentationMode : ""} ${activeIndex === 8 ? styles.lightChrome : ""}`}
+      className={`${styles.presentation} ${isFa ? styles.persian : ""} ${ready ? styles.ready : styles.initializing} ${presentationMode ? styles.presentationMode : ""}`}
+      lang={isFa ? "fa-IR" : "en"}
+      dir={isFa ? "rtl" : "ltr"}
       onMouseMove={showControls}
       onPointerDown={(event) => { touchStart.current = { x: event.clientX, y: event.clientY }; showControls(); }}
       onPointerUp={(event) => {
@@ -171,59 +208,67 @@ export function PresentationShell() {
         const dy = event.clientY - touchStart.current.y;
         touchStart.current = null;
         const distance = Math.abs(dx) > Math.abs(dy) ? dx : dy;
-        if (Math.abs(distance) > 52) step(distance < 0 ? 1 : -1);
+        if (Math.abs(distance) > 52) {
+          const nextGesture = Math.abs(dx) > Math.abs(dy) ? (isFa ? dx > 0 : dx < 0) : dy < 0;
+          step(nextGesture ? 1 : -1);
+        }
       }}
       onClick={(event) => {
         if ((event.target as HTMLElement).closest("[data-presentation-next]")) step(1);
       }}
     >
-      <a className={styles.presentationSkip} href="#presentation-controls">Skip to presentation controls</a>
+      <a className={styles.presentationSkip} href="#presentation-controls">{chrome.skip}</a>
       <div className={styles.slides} aria-live="off" aria-hidden={overviewOpen} inert={overviewOpen}>
-        <PresentationSlides activeIndex={activeIndex} />
+        {isFa ? <PresentationSlidesFa activeIndex={activeIndex} /> : <PresentationSlides activeIndex={activeIndex} />}
       </div>
 
       <div className={styles.liveRegion} role="status" aria-live="polite">
-        Slide {activeIndex + 1} of {presentationSlides.length}: {current.shortTitle}
+        {chrome.slide} {isFa ? toPersianDigits(activeIndex + 1) : activeIndex + 1} {chrome.of} {isFa ? toPersianDigits(presentationSlides.length) : presentationSlides.length}: {current.shortTitle}
       </div>
 
       <header className={`${styles.presentationHeader} ${idle && !overviewOpen ? styles.idle : ""}`} aria-hidden={overviewOpen} inert={overviewOpen}>
-        <Link href="/" className={styles.presentationBrand} aria-label="Return to portfolio">sq<span>.</span></Link>
+        <Link href="/" className={styles.presentationBrand} aria-label={chrome.returnToPortfolio}>sq<span>.</span></Link>
         <div className={styles.chapterReadout}><span>{current.chapter}</span><i /> <span>{current.shortTitle}</span></div>
+        <div className={styles.languageSwitch} aria-label={isFa ? "انتخاب زبان" : "Choose language"}>
+          <Link href={`/presentation#${current.id}`} lang="en" aria-current={!isFa ? "page" : undefined}>EN</Link>
+          <span aria-hidden="true">/</span>
+          <Link href={`/presentation/fa#${current.id}`} lang="fa" dir="rtl" aria-current={isFa ? "page" : undefined}>فارسی</Link>
+        </div>
         <button onClick={togglePresentationMode} className={styles.modeButton}>
           {presentationMode ? <Minimize2 size={14} /> : <Expand size={14} />}
-          {presentationMode ? "Exit presentation" : "Enter presentation mode"}
+          {presentationMode ? chrome.exitMode : chrome.enterMode}
         </button>
       </header>
 
-      <nav id="presentation-controls" className={`${styles.controls} ${idle && !overviewOpen ? styles.idle : ""}`} aria-label="Presentation controls" aria-hidden={overviewOpen} inert={overviewOpen}>
-        <div className={styles.counter}><strong>{String(activeIndex + 1).padStart(2, "0")}</strong><span>/</span><small>{String(presentationSlides.length).padStart(2, "0")}</small></div>
+      <nav id="presentation-controls" className={`${styles.controls} ${idle && !overviewOpen ? styles.idle : ""}`} aria-label={chrome.controls} aria-hidden={overviewOpen} inert={overviewOpen}>
+        <div className={styles.counter}><strong>{formatNumber(activeIndex + 1)}</strong><span>/</span><small>{formatNumber(presentationSlides.length)}</small></div>
         <div className={styles.progressTrack} aria-label={`${activeIndex + 1} of ${presentationSlides.length}`}>
           <span style={{ width: `${((activeIndex + 1) / presentationSlides.length) * 100}%` }} />
         </div>
-        <button onClick={() => step(-1)} disabled={activeIndex === 0} aria-label="Previous slide"><ArrowLeft size={18} /></button>
-        <button onClick={() => step(1)} disabled={activeIndex === presentationSlides.length - 1} aria-label="Next slide"><ArrowRight size={18} /></button>
-        <button onClick={() => setOverviewOpen(true)} aria-label="Open slide overview"><Grid2X2 size={16} /></button>
+        <button onClick={() => step(-1)} disabled={activeIndex === 0} aria-label={chrome.previous}>{isFa ? <ArrowRight size={18} /> : <ArrowLeft size={18} />}</button>
+        <button onClick={() => step(1)} disabled={activeIndex === presentationSlides.length - 1} aria-label={chrome.next}>{isFa ? <ArrowLeft size={18} /> : <ArrowRight size={18} />}</button>
+        <button onClick={() => setOverviewOpen(true)} aria-label={chrome.openOverview}><Grid2X2 size={16} /></button>
       </nav>
 
-      <p className={`${styles.keyboardHint} ${idle ? styles.idle : ""}`}>← → navigate <span>·</span> O overview <span>·</span> Esc exit</p>
+      <p className={`${styles.keyboardHint} ${idle ? styles.idle : ""}`}>{chrome.keyboardHint}</p>
 
       {overviewOpen && (
         <div ref={overview} className={styles.overview} role="dialog" aria-modal="true" aria-labelledby="overview-title">
           <div className={styles.overviewTop}>
-            <div><span>DECK INDEX</span><h2 id="overview-title">The engineering journey.</h2></div>
-            <button onClick={() => setOverviewOpen(false)} aria-label="Close slide overview"><X /></button>
+            <div><span>{chrome.overviewKicker}</span><h2 id="overview-title">{chrome.overviewTitle}</h2></div>
+            <button onClick={() => setOverviewOpen(false)} aria-label={chrome.closeOverview}><X /></button>
           </div>
           <div className={styles.overviewGrid}>
-            {presentationChapters.map((chapter) => (
+            {localizedChapters.map((chapter) => (
               <div key={chapter}>
                 <h3>{chapter}</h3>
-                {presentationSlides.map((slide, slideIndex) => slide.chapter === chapter && (
+                {localizedSlides.map((slide, slideIndex) => slide.chapter === chapter && (
                   <button
                     key={slide.id}
                     className={slideIndex === activeIndex ? styles.overviewActive : ""}
                     onClick={() => { navigate(slideIndex); setOverviewOpen(false); }}
                   >
-                    <span>{String(slideIndex + 1).padStart(2, "0")}</span>{slide.shortTitle}
+                    <span>{formatNumber(slideIndex + 1)}</span>{slide.shortTitle}
                   </button>
                 ))}
               </div>

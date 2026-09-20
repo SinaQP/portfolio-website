@@ -51,7 +51,7 @@ export const siteContent = {
   credentials: {
     title: "Study alongside practice.",
     description:
-      "Computing, mathematics, and communication. Credential details supplied by Sina; issuer verification links are not yet available.",
+      "Computing, mathematics, and communication. Coursera-backed records link directly to their accomplishment pages; the EF SET record is listed separately without a stored verification URL.",
   },
   circuit: {
     title: "Hadamard transformations of a single qubit",

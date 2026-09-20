@@ -1,18 +1,17 @@
 import { caseStudies } from "./case-studies";
-import { selectedCredentials } from "./credentials";
-import { githubRepositories } from "./github";
+import { credentialStats, languages, selectedCredentials } from "./credentials";
+import { githubSnapshot, presentationRepositories } from "./github";
 import { journey, stack } from "./profile";
 import { research, researchProject } from "./research";
 
 export const presentationSlides = [
-  { id: "intro", chapter: "Beginning", shortTitle: "Engineer" },
+  { id: "intro", chapter: "Beginning", shortTitle: "Sina Qasempour" },
   { id: "origin", chapter: "Beginning", shortTitle: "Starting point" },
-  { id: "journey", chapter: "Beginning", shortTitle: "Six years" },
-  { id: "foundations", chapter: "Building", shortTitle: "Foundations" },
+  { id: "zaravand", chapter: "Building", shortTitle: "Zaravand" },
+  { id: "iranslice", chapter: "Building", shortTitle: "IranSlice" },
+  { id: "zaraamad", chapter: "Building", shortTitle: "Zaraamad" },
   { id: "rahtal", chapter: "Building", shortTitle: "Rahtal" },
   { id: "danobin", chapter: "Ownership", shortTitle: "Danobin" },
-  { id: "zaraamad", chapter: "Systems", shortTitle: "Real conditions" },
-  { id: "along-the-way", chapter: "Systems", shortTitle: "Along the way" },
   { id: "systems", chapter: "Systems", shortTitle: "The deeper questions" },
   { id: "toolbox", chapter: "Systems", shortTitle: "Toolbox" },
   { id: "open-source", chapter: "Learning", shortTitle: "Working record" },
@@ -22,6 +21,22 @@ export const presentationSlides = [
   { id: "future", chapter: "Next", shortTitle: "Direction" },
   { id: "contact", chapter: "Next", shortTitle: "Continue" },
 ] as const;
+
+export const presentationCareer = {
+  zaravand: {
+    name: "Zaravand",
+    milestone: "First professional step",
+    role: "Internship",
+  },
+  iranslice: {
+    name: "IranSlice",
+    milestone: "First project",
+    role: "Full-Stack Development",
+  },
+  zaraamad: { name: "Zaraamad", milestone: "First major project" },
+  rahtal: { name: "Rahtal", milestone: "Interconnected system complexity" },
+  danobin: { name: "Danobin", milestone: "Technical ownership", role: "CTO" },
+} as const;
 
 export const presentationChapters = [
   "Beginning",
@@ -40,6 +55,7 @@ function professionalProject(slug: string) {
 }
 
 export const presentationData = {
+  career: presentationCareer,
   journey,
   stack,
   rahtal: professionalProject("rahtal"),
@@ -47,16 +63,16 @@ export const presentationData = {
   zaraamad: professionalProject("zaraamad"),
   zarvand: professionalProject("zarvand"),
   tireban: professionalProject("tireban"),
-  repositories: githubRepositories.filter((repository) =>
-    [
-      "zaraamad-portal-be",
-      "ZaraamadQueryRunner",
-      "rahtal-assistant",
-      "TypePlus",
-      "SVM-Vs-QSVM",
-    ].includes(repository.name),
-  ),
-  credentials: selectedCredentials.slice(0, 3),
+  repositories: presentationRepositories,
+  credentials: selectedCredentials,
+  languages,
+  stats: {
+    publicRepositories: githubSnapshot.publicRepositoryCount,
+    verifiedCredentials: credentialStats.verifiedCount,
+    professionalSystems: caseStudies.filter((study) => study.slug !== "svm-vs-qsvm").length,
+    githubVerifiedAt: githubSnapshot.verifiedAt,
+    credentialsVerifiedAt: credentialStats.verifiedAt,
+  },
   research,
   researchProject,
 };

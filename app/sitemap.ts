@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/work",
     "/research",
     "/presentation",
+    "/presentation/fa",
     "/research/svm-vs-qsvm",
     ...caseStudies.map((item) => `/work/${item.slug}`),
   ].map((path) => ({

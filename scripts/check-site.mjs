@@ -18,6 +18,7 @@ const routes = [
   "/about",
   "/research",
   "/presentation",
+  "/presentation/fa",
   "/work",
   "/work/rahtal",
   "/work/danobin",
@@ -140,6 +141,27 @@ async function checkPage(route) {
     expectedCanonical,
     `${route}: incorrect canonical`,
   );
+  if (route === "/presentation" || route === "/presentation/fa") {
+    const alternates = [...html.matchAll(/<link\b[^>]*>/gi)]
+      .map(([tag]) => attributes(tag))
+      .filter((item) => item.rel?.split(/\s+/).includes("alternate"));
+    for (const [language, path] of [
+      ["en", "/presentation"],
+      ["fa-IR", "/presentation/fa"],
+    ]) {
+      const alternate = alternates.find((item) => item.hreflang === language);
+      assert.ok(alternate?.href, `${route}: missing ${language} alternate`);
+      assert.equal(
+        new URL(alternate.href).href,
+        new URL(path, canonicalUrl).href,
+        `${route}: incorrect ${language} alternate`,
+      );
+    }
+  }
+  if (route === "/presentation/fa") {
+    assert.match(html, /lang="fa-IR"/i, `${route}: missing Persian language context`);
+    assert.match(html, /dir="rtl"/i, `${route}: missing RTL direction context`);
+  }
   const socialUrl = meta.find((item) => item.property === "og:url")?.content;
   assert.ok(socialUrl, `${route}: missing social URL`);
   assert.equal(

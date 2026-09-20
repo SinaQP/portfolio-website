@@ -10,9 +10,9 @@ export function SignalMark({ label = "SYSTEM / SIGNAL" }: { label?: string }) {
   );
 }
 
-export function SystemGraph({ nodes }: { nodes: string[] }) {
+export function SystemGraph({ nodes, ariaLabel = "System relationships" }: { nodes: string[]; ariaLabel?: string }) {
   return (
-    <div className={styles.systemGraph} aria-label={`System relationships: ${nodes.join(", ")}`}>
+    <div className={styles.systemGraph} aria-label={`${ariaLabel}: ${nodes.join(", ")}`}>
       <svg viewBox="0 0 720 430" role="img" aria-hidden="true">
         <path className={styles.graphPath} d="M115 95 C250 95 235 205 360 205 S485 92 610 92" />
         <path className={styles.graphPath} d="M115 335 C250 335 235 205 360 205 S485 338 610 338" />
@@ -30,9 +30,10 @@ export function SystemGraph({ nodes }: { nodes: string[] }) {
   );
 }
 
-export function QuantumCircuit() {
+export function QuantumCircuit({ locale = "en" }: { locale?: "en" | "fa" }) {
+  const captions = locale === "fa" ? ["شروع", "تغییر", "تداخل", "اندازه‌گیری"] : ["STATE", "TRANSFORM", "INTERFERE", "MEASURE"];
   return (
-    <div className={styles.quantumCircuit} aria-label="Conceptual four-line quantum circuit">
+    <div className={styles.quantumCircuit} aria-label={locale === "fa" ? "یک مدار کوانتومی ساده با چهار خط" : "Conceptual four-line quantum circuit"} dir="ltr">
       {[0, 1, 2, 3].map((wire) => (
         <div className={styles.quantumWire} key={wire}>
           <span>|0⟩</span>
@@ -45,23 +46,23 @@ export function QuantumCircuit() {
         </div>
       ))}
       <div className={styles.circuitCaption}>
-        <span>STATE</span><span>TRANSFORM</span><span>INTERFERE</span><span>MEASURE</span>
+        {captions.map((caption) => <span key={caption} dir={locale === "fa" ? "rtl" : "ltr"}>{caption}</span>)}
       </div>
     </div>
   );
 }
 
-export function ComparisonPlot() {
+export function ComparisonPlot({ locale = "en" }: { locale?: "en" | "fa" }) {
   return (
-    <div className={styles.comparisonPlot} aria-label="Conceptual comparison of classical and quantum-kernel evaluation">
-      <div className={styles.plotAxis}><span>evaluation</span><i /></div>
+    <div className={styles.comparisonPlot} aria-label={locale === "fa" ? "مقایسه‌ی نتیجه‌ی مدل کلاسیک و کرنل کوانتومی" : "Conceptual comparison of classical and quantum-kernel evaluation"} dir="ltr">
+      <div className={styles.plotAxis}><span>{locale === "fa" ? "نتیجه" : "evaluation"}</span><i /></div>
       <div className={styles.plotLineClassical}>
         <span>SVM</span><i /><b />
       </div>
       <div className={styles.plotLineQuantum}>
         <span>QSVM</span><i /><b />
       </div>
-      <p>Same reduced feature space.<br />Different kernel representation.</p>
+      <p dir={locale === "fa" ? "rtl" : "ltr"}>{locale === "fa" ? <>دیتای یکسان.<br />دو روش متفاوت برای ساخت کرنل.</> : <>Same reduced feature space.<br />Different kernel representation.</>}</p>
     </div>
   );
 }
