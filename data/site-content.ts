@@ -1,3 +1,5 @@
+import { careerStartYear } from "@/lib/career";
+
 export const siteContent = {
   implementationUnavailable: "A private company product; its source and stack are not public.",
   navigation: [
@@ -8,7 +10,7 @@ export const siteContent = {
   hero: {
     status: "Software engineer · open to graduate research",
     headline: { before: "I build the software", accent: "real institutions", after: "run on." },
-    line: "Six years of backend and data systems. Next: quantum computing research.",
+    line: `Building backend and data systems since ${careerStartYear}. Next: quantum computing research.`,
     proofs: [
       {
         tag: "Open source · Live demo",

@@ -1,3 +1,5 @@
+import { capitalize, yearsInWords } from "@/lib/career";
+
 export const profile = {
   name: "Sina Qasempour",
   role: "Engineer",
@@ -10,13 +12,13 @@ export const profile = {
     "Exploring the future of computing.",
   ],
   introduction:
-    "Software engineer and computer engineering student. Six years of turning technical problems into working systems — across production software, startup leadership, and research in Quantum Computing.",
+    `Software engineer and computer engineering student. ${capitalize(yearsInWords())} years of turning technical problems into working systems — across production software, startup leadership, and research in Quantum Computing.`,
   source: "User brief; résumé; user positioning update, September 2026",
   about: {
-    summary: "I build real-world systems and explore the ideas beneath them. Six years in software, enterprise platforms, and startup leadership have shaped my practice. Today, that curiosity also leads me into Quantum Computing.",
+    summary: `I build real-world systems and explore the ideas beneath them. ${capitalize(yearsInWords())} years in software, enterprise platforms, and startup leadership have shaped my practice. Today, that curiosity also leads me into Quantum Computing.`,
     lead: "Built Through Practice. Driven by Curiosity.",
     paragraphs: [
-      "Software was the starting point. Over roughly six years, my work expanded from implementing features into understanding complete systems — their architecture, data flows, operational boundaries, and failure modes. Enterprise platforms taught me engineering under real-world constraints.",
+      `Software was the starting point. Over ${yearsInWords()} years, my work expanded from implementing features into understanding complete systems — their architecture, data flows, operational boundaries, and failure modes. Enterprise platforms taught me engineering under real-world constraints.`,
       "Serving as CTO at Danobin widened that technical responsibility from implementation to architectural ownership and broader decision-making. Alongside hands-on delivery, engineering became about defining reliable boundaries and anticipating how components behave in production.",
       "Beyond immediate production requirements, I invest continuous study into advanced computation and Quantum Computing. Whether analyzing algorithmic complexity, statevector simulations, or classical versus quantum kernels, curiosity drives me to understand what happens beneath standard abstractions.",
     ],

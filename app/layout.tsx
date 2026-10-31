@@ -8,6 +8,7 @@ import {
 } from "@/components/engineering/motion";
 import { profile } from "@/data/profile";
 import { siteUrl } from "@/lib/metadata";
+import { yearsInWords } from "@/lib/career";
 import "./globals.css";
 
 const sans = Inter({
@@ -22,7 +23,10 @@ const mono = IBM_Plex_Mono({
   display: "swap",
 });
 const description =
-  "Sina Qasempour is a Software Engineer with approximately six years building backend systems, enterprise applications, and production software, while exploring Quantum Computing.";
+  `Sina Qasempour is a Software Engineer with ${yearsInWords()} years building backend systems, enterprise applications, and production software, while exploring Quantum Computing.`;
+
+// Regenerate pages daily so the years-of-experience count stays current without a deploy.
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   metadataBase: siteUrl,
