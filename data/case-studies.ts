@@ -22,18 +22,18 @@ const records: ProjectRecord[] = [
     slug: "rahtal",
     number: "01",
     name: "Rahtal",
-    category: "Enterprise systems · Integration engineering",
+    category: "Enterprise systems · Project leadership",
     summary:
       "Connecting organizational work, priorities, and performance through software that fits the way teams operate.",
     overview:
-      "Rahtal is an enterprise management platform concerned with organizational alignment, priorities, and day-to-day work. My public integration companion provides a closer look at the engineering around its existing task and performance APIs.",
+      "Rahtal is an enterprise management platform concerned with organizational alignment, priorities, and day-to-day work. I lead the project day to day: I work with the product owner, hold the overall design, and run the meetings where we decide which features to add and how.",
     problem:
       "Enterprise workflows rarely stop at one interface: people need to find their tasks, understand context, and record work through connected tools. That integration must respect the existing API contract, authentication lifecycle, and the difference between a safe read and a consequential write.",
     architecture:
       "The public companion separates an HTTP client, authentication, task and performance services, and a small MCP interface. It connects to the existing Rahtal API as an independent application, with tokens kept in process memory and response errors translated at the boundary.",
     technology: ["Python", "HTTPX", "REST APIs", "MCP", "Django", "React"],
     contribution:
-      "I worked on Rahtal in a full-stack role with data-related responsibilities. My public integration companion shows the same engineering concerns in code: explicit service boundaries, authenticated API access, and focused tests around task retrieval and performance submission.",
+      "Besides leading the project, I am its data scientist and work on it as a full-stack developer. My public integration companion is version 0.1 of an agent we plan to build into Rahtal; it shows the engineering concerns in code: explicit service boundaries, authenticated API access, and focused tests around task retrieval and performance submission.",
     challenges:
       "An expired session, malformed response, and an unavailable server need different handling. Performance submission also introduces ambiguity when a network failure follows a write, so the integration deliberately avoids automatically retrying an uncertain submission.",
     lessons:
@@ -52,7 +52,7 @@ const records: ProjectRecord[] = [
       "Enterprise workflows",
     ],
     evidenceNote:
-      "The Rahtal platform itself is a private company system. The public source is my standalone integration companion, and the diagram shows that integration boundary.",
+      "The Rahtal platform itself is a private company system. The public source is the integration companion, the first version of a planned in-product agent; the diagram shows that integration boundary.",
   },
   {
     slug: "danobin",
@@ -108,11 +108,11 @@ const records: ProjectRecord[] = [
       "Docker",
     ],
     contribution:
-      "I worked on Zaraamad as a full-stack developer. The related public repositories include customer and service modules, database migrations, ownership-aware ticket workflows, and operational scripts for inspecting and moving data between systems.",
+      "I built several of Zaraamad's municipal revenue subsystems: trade duties for union and non-union businesses, transferred-income duties, and the general \"Other\" subsystem, which accepts any type of municipal duty, calculates it, and issues the bill to the citizen. I also built search across the very large volume of citizens' bills in these subsystems. About three quarters of the commits in each of these subsystems are mine, from June 2023 to September 2026.",
     challenges:
       "The portal verifies Django-issued JWTs while serving its own FastAPI endpoints, making compatibility at the authentication boundary explicit. Customer-specific configuration, remote bridge availability, and partial failures across multiple databases add another layer of engineering beyond a single application database.",
     lessons:
-      "When one system spans many customer databases and existing services, domain rules and integration boundaries have to stay explicit and inspectable.",
+      "Each kind of municipal duty has its own rules, but citizens and staff need them to behave consistently; a general subsystem for any duty type only works when those rules stay explicit and inspectable.",
     image: "/Zaraamad-project.png",
     links: [
       {
@@ -135,7 +135,7 @@ const records: ProjectRecord[] = [
       "Customer databases",
     ],
     evidenceNote:
-      "Based on the public portal, support, and query-runner repositories; the diagram is a conceptual view of their responsibilities.",
+      "The main Zaraamad backend is a private company system; the linked portal, support, and query-runner repositories are public parts of it. The diagram is a conceptual view of their responsibilities.",
   },
   {
     slug: "zarvand",
@@ -260,7 +260,7 @@ const records: ProjectRecord[] = [
       "Results & diagnostics",
     ],
     evidenceNote:
-      "Submitted to a journal; not accepted. A simulator study, not a hardware benchmark or clinical application. Five overlapping splits and earlier feature-map selection limit inference; the report documents those limitations explicitly.",
+      "Submitted to Machine Learning: Science and Technology (IOP Publishing); not accepted. A simulator study, not a hardware benchmark or clinical application. Five overlapping splits and earlier feature-map selection limit inference; the report documents those limitations explicitly.",
   },
 ];
 
@@ -275,7 +275,7 @@ export type CaseStudy = ProjectRecord & {
   featured: boolean;
 };
 const roles: Record<string, string> = {
-  rahtal: "Full-stack and data-related work",
+  rahtal: "Project lead · Data scientist · Full-stack",
   danobin: "CTO",
   zaraamad: "Full-stack Developer",
   zarvand: "Frontend Developer",

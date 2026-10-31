@@ -55,7 +55,7 @@ export const siteContent = {
   credentials: {
     title: "Study alongside practice.",
     description:
-      "Computing, mathematics, and communication. Coursera records link to their verification pages.",
+      "Computing, mathematics, and communication. Each record links to its verification page.",
   },
   circuit: {
     title: "Hadamard transformations of a single qubit",

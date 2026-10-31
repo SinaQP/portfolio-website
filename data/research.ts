@@ -18,7 +18,7 @@ export const research = {
   finding:
     "In this experiment, the classical baselines achieved higher mean F1. No quantum advantage is demonstrated.",
   scope:
-    "An independent research study using exact local simulation, submitted to a journal and not accepted. Not a quantum-hardware benchmark or a clinical application.",
+    "An independent research study using exact local simulation, submitted to Machine Learning: Science and Technology (IOP Publishing) and not accepted. Not a quantum-hardware benchmark or a clinical application.",
   methods: [
     {
       title: "Start with a baseline.",

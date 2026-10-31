@@ -8,7 +8,7 @@ export const experience = [
   },
   {
     name: "Rahtal",
-    role: "Full-stack Developer / Data Scientist / AI Engineer",
+    role: "Project lead / Data Scientist / Full-stack Developer",
     period: null,
     context: "Enterprise work and performance management",
     source: "Résumé, project section",

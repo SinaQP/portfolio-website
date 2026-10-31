@@ -7,11 +7,14 @@ const suppliedCredentials: {
   issued?: string;
   credentialId?: string;
   featured?: boolean;
+  url?: string;
 }[] = [
   {
     name: "EF SET English Certificate 72/100 (C2 Proficient)",
     issuer: "EF SET",
+    issued: "Jul 2026",
     featured: true,
+    url: "https://cert.efset.org/en/tfm8oY",
   },
   {
     name: "IBM Data Science Professional Certificate",
@@ -159,16 +162,16 @@ export interface CredentialItem {
 
 export const credentials: CredentialItem[] = suppliedCredentials.map((item) => {
   const isLossSpecialization = item.credentialId === "LOSS6SVKXJ6U";
-  const url = item.credentialId
+  const url = item.url ?? (item.credentialId
     ? isLossSpecialization
       ? `https://www.coursera.org/account/accomplishments/specialization/${item.credentialId}`
       : `https://www.coursera.org/account/accomplishments/verify/${item.credentialId}`
-    : undefined;
+    : undefined);
 
   return {
     ...item,
     url,
-    source: url ? "Verified Coursera accomplishment record" : "User-supplied credential list",
+    source: item.url ? "Official issuer certificate page" : url ? "Verified Coursera accomplishment record" : "User-supplied credential list",
     verification: url ? ("issuer-verified" as const) : ("user-supplied" as const),
   };
 });
@@ -191,9 +194,9 @@ export const selectedCredentials = presentationCredentialNames.map((name) => {
 export const credentialStats = {
   verifiedCount: verifiedCredentials.length,
   totalRecordedCount: credentials.length,
-  verifiedAt: "2026-09-15",
+  verifiedAt: "2026-10-31",
   methodology:
-    "Counts credential records with a Coursera accomplishment URL and credential ID. The EF SET record remains listed on the portfolio but is not included in the verified count because no verification URL is stored.",
+    "Counts credential records with an issuer verification page: Coursera accomplishment records and the official EF SET certificate page.",
 } as const;
 
 export function credentialIssuerMark(issuer: string) {
