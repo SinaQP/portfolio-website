@@ -8,7 +8,7 @@ export const siteContent = {
     { label: "About", href: "/about" },
   ],
   hero: {
-    status: "Software engineer · open to graduate research",
+    status: "Software engineer · open to research opportunities",
     headline: { before: "I build the software", accent: "real institutions", after: "run on." },
     line: `Building backend and data systems since ${careerStartYear}. Next: quantum computing research.`,
     proofs: [

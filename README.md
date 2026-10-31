@@ -33,7 +33,7 @@ Components are server-rendered except navigation, chapter selection, motion infr
 
 See `docs/second-pass-plan.md` and `docs/second-pass-audit.md`. Personal/project prose belongs in structured data. Keep repository features distinct from personal ownership and production evidence. Never infer deployment scale from a repository.
 
-The original résumé is retained, but its English level and IBM study progress predate the newer details supplied by Sina. Refresh it before publication. Exact project dates and wider Danobin leadership responsibilities remain to be confirmed.
+`public/Sina-Qasempour-Resume.pdf` is the CV rebuilt on 31 October 2026 from the facts in Sina's vault (master record). Rebuild it when those facts change. Exact Zaravand and Danobin dates remain to be confirmed.
 
 ## SEO and hosting
 
