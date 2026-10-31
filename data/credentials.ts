@@ -17,6 +17,13 @@ const suppliedCredentials: {
     url: "https://cert.efset.org/en/tfm8oY",
   },
   {
+    name: "MA006: Foundations of Real World Math",
+    issuer: "Saylor Academy",
+    issued: "Sep 2026",
+    credentialId: "6648683555SQ",
+    url: "https://learn.saylor.org/pluginfile.php/1/tool_certificate/issues/1789724348/6648683555SQ.pdf",
+  },
+  {
     name: "IBM Data Science Professional Certificate",
     issuer: "IBM",
     issued: "Jul 2026",
@@ -196,7 +203,7 @@ export const credentialStats = {
   totalRecordedCount: credentials.length,
   verifiedAt: "2026-10-31",
   methodology:
-    "Counts credential records with an issuer verification page: Coursera accomplishment records and the official EF SET certificate page.",
+    "Counts credential records with an issuer verification page: Coursera accomplishment records, the Saylor Academy certificate and the official EF SET certificate page.",
 } as const;
 
 export function credentialIssuerMark(issuer: string) {
