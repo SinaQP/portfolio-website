@@ -187,7 +187,7 @@ function SlideContent({ index }: { index: number }) {
           <div className={styles.repositoryShowcase}>
             <div className={styles.featuredRepositories}>
               {presentationData.repositories.filter((repository) => repository.tier === "major").map((repository, repositoryIndex) => (
-                <a key={repository.name} href={repository.source} target="_blank" rel="noopener noreferrer">
+                <a key={repository.name} href={repository.demo ?? repository.source} target="_blank" rel="noopener noreferrer">
                   <span>FEATURED BUILD {String(repositoryIndex + 1).padStart(2, "0")} · {repository.category}</span>
                   <strong>{repository.name}</strong>
                   <p>{repository.question}</p>
@@ -198,7 +198,7 @@ function SlideContent({ index }: { index: number }) {
             </div>
             <div className={styles.repositoryNodes}>
               {presentationData.repositories.filter((repository) => repository.tier !== "major").map((repository) => (
-                <a key={repository.name} href={repository.source} target="_blank" rel="noopener noreferrer">
+                <a key={repository.name} href={repository.demo ?? repository.source} target="_blank" rel="noopener noreferrer">
                   <span>{repository.category}</span>
                   <strong>{repository.name}</strong>
                   <small>{repository.question}</small>

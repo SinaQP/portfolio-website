@@ -1,8 +1,8 @@
 export const githubSnapshot = {
   owner: "SinaQP",
-  publicRepositoryCount: 48,
+  publicRepositoryCount: 49,
   forkCount: 2,
-  verifiedAt: "2026-09-15",
+  verifiedAt: "2026-10-31",
   source: "https://api.github.com/users/SinaQP",
   methodology:
     "GitHub public profile total, cross-checked against the complete owner repository API response. The count includes public forks and excludes private, collaborative, and self-hosted repositories that are not publicly enumerable.",
@@ -22,9 +22,23 @@ export interface GithubRepository {
   detail: string;
   detailFa?: string;
   source: string;
+  /** A live page that shows the project working; cards link here when present. */
+  demo?: string;
 }
 
 export const githubRepositories: GithubRepository[] = [
+  {
+    name: "SageQL",
+    category: "SDK · safe text-to-SQL",
+    categoryFa: "SDK · گزارش‌گیری امن با AI",
+    tier: "major",
+    question: "Can a language model answer reporting questions without ever writing the SQL?",
+    questionFa: "می‌شه مدل زبانی به سؤال‌های گزارش‌گیری جواب بده، بدون اینکه خودش SQL بنویسه؟",
+    detail: "A Python SDK on PyPI for Persian and English chat reporting. The model only extracts intent; deterministic code authorizes it and compiles parameterized, read-only SQL. A live showcase records each stage, including attacks.",
+    detailFa: "یک SDK پایتون روی PyPI برای گزارش‌گیری گفتگویی به فارسی و انگلیسی. مدل فقط منظور کاربر رو استخراج می‌کنه؛ کد قطعی دسترسی رو بررسی می‌کنه و SQL پارامتری و فقط‌خواندنی رو خودش می‌سازه. یک صفحه‌ی نمایشی زنده همه‌ی مراحل، حتی حمله‌ها، رو نشون می‌ده.",
+    source: "https://github.com/SinaQP/SageQL",
+    demo: "https://sinaqp.github.io/SageQL/",
+  },
   {
     name: "zaraamad-portal-be",
     category: "Systems",
@@ -72,8 +86,8 @@ export const githubRepositories: GithubRepository[] = [
     tier: "major",
     question: "Can natural language reach SQL without giving up control?",
     questionFa: "می‌شه از زبان طبیعی به SQL رسید، بدون اینکه کنترل از دست بره؟",
-    detail: "A Python package that turns Persian and English questions into guarded SQL Server SELECT queries, with schema scopes, access profiles, masking, and execution limits.",
-    detailFa: "یک پکیج پایتون برای تبدیل سؤال‌های فارسی و انگلیسی به SELECT کنترل‌شده؛ با محدوده‌ی اسکیمای مشخص، سطح دسترسی، پوشاندن دیتا و محدودیت اجرا.",
+    detail: "A Python package that turns Persian and English questions into guarded SQL Server SELECT queries, with schema scopes, access profiles, masking, and execution limits. Its lessons led to SageQL, where the model no longer writes SQL.",
+    detailFa: "یک پکیج پایتون برای تبدیل سؤال‌های فارسی و انگلیسی به SELECT کنترل‌شده؛ با محدوده‌ی اسکیمای مشخص، سطح دسترسی، پوشاندن دیتا و محدودیت اجرا. تجربه‌ی این پروژه به SageQL رسید، جایی که دیگه مدل SQL نمی‌نویسه.",
     source: "https://github.com/SinaQP/QuerySmith",
   },
   {
@@ -161,6 +175,7 @@ export const githubRepositories: GithubRepository[] = [
 
 export const presentationRepositories = githubRepositories.filter((repository) =>
   [
+    "SageQL",
     "QuerySmith",
     "Human-digital-twin-pipline",
     "modern-library",

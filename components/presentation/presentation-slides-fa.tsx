@@ -115,7 +115,7 @@ function SlideContentFa({ index }: { index: number }) {
           <div className={styles.repositoryShowcase}>
             <div className={styles.featuredRepositories}>
               {presentationData.repositories.filter((repository) => repository.tier === "major").map((repository, repositoryIndex) => (
-                <a key={repository.name} href={repository.source} target="_blank" rel="noopener noreferrer">
+                <a key={repository.name} href={repository.demo ?? repository.source} target="_blank" rel="noopener noreferrer">
                   <span>پروژه‌ی منتخب {number(repositoryIndex + 1)} · {repository.categoryFa}</span>
                   <strong dir="ltr">{repository.name}</strong><p>{repository.questionFa}</p><small>{repository.detailFa}</small><ArrowUpLeft size={18} />
                 </a>
@@ -123,7 +123,7 @@ function SlideContentFa({ index }: { index: number }) {
             </div>
             <div className={styles.repositoryNodes}>
               {presentationData.repositories.filter((repository) => repository.tier !== "major").map((repository) => (
-                <a key={repository.name} href={repository.source} target="_blank" rel="noopener noreferrer">
+                <a key={repository.name} href={repository.demo ?? repository.source} target="_blank" rel="noopener noreferrer">
                   <span>{repository.categoryFa}</span><strong dir="ltr">{repository.name}</strong><small>{repository.questionFa}</small><ArrowUpLeft size={15} />
                 </a>
               ))}

@@ -21,7 +21,7 @@ export function OpenSource({ full = false }: { full?: boolean }) {
         {githubRepositories.slice(0, full ? undefined : 4).map((repo) => (
           <a
             key={repo.name}
-            href={repo.source}
+            href={repo.demo ?? repo.source}
             target="_blank"
             rel="noopener noreferrer"
             className="repository-entry"
