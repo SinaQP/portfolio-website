@@ -33,7 +33,7 @@ const records: ProjectRecord[] = [
       "The public companion separates an HTTP client, authentication, task and performance services, and a small MCP interface. It connects to the existing Rahtal API as an independent application, with tokens kept in process memory and response errors translated at the boundary.",
     technology: ["Python", "HTTPX", "REST APIs", "MCP", "Django", "React"],
     contribution:
-      "Besides leading the project, I am its data scientist and work on it as a full-stack developer. My public integration companion is version 0.1 of an agent we plan to build into Rahtal; it shows the engineering concerns in code: explicit service boundaries, authenticated API access, and focused tests around task retrieval and performance submission.",
+      "Besides leading the project, I am its data scientist and work on it as a full-stack developer. I also design the AI features planned for Rahtal: SageQL, my open-source reporting SDK, is one of the products we plan to build into it, and my public integration companion is version 0.1 of an in-product agent. The companion shows the engineering concerns in code: explicit service boundaries, authenticated API access, and focused tests around task retrieval and performance submission.",
     challenges:
       "An expired session, malformed response, and an unavailable server need different handling. Performance submission also introduces ambiguity when a network failure follows a write, so the integration deliberately avoids automatically retrying an uncertain submission.",
     lessons:
