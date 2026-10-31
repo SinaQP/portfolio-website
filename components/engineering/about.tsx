@@ -7,6 +7,7 @@ import {
   linkedinUrl,
 } from "@/data/credentials";
 import { profile } from "@/data/profile";
+import { education, educationSummary } from "@/data/education";
 import { experience } from "@/data/experience";
 import { siteContent } from "@/data/site-content";
 import { SectionHeading } from "./section-heading";
@@ -45,6 +46,11 @@ export function About({ full = false }: { full?: boolean }) {
             </div>
           )}
           {!full && <div className="profile-credentials" aria-label="Credential highlights">
+            <Link href="/about#education" className="profile-credential">
+              <span className="profile-issuer">IAU</span>
+              <span><strong>{educationSummary.title}</strong><small>{educationSummary.detail}</small></span>
+              <ArrowUpRight size={18} aria-hidden="true" />
+            </Link>
             <Link href="/about#credentials" className="profile-credential">
               <span className="profile-issuer">IBM</span>
               <span><strong>IBM Data Science</strong><small>July 2026</small></span>
@@ -52,7 +58,7 @@ export function About({ full = false }: { full?: boolean }) {
             </Link>
             <Link href="/about#credentials" className="profile-credential">
               <span className="profile-issuer profile-issuer-ef">EF<small>SET</small></span>
-              <span><strong>English · C2 Proficient</strong><small>EF SET English Certificate · 72/100</small></span>
+              <span><strong>EF SET English Certificate</strong><small>72/100 · C2 Proficient</small></span>
               <ArrowUpRight size={18} aria-hidden="true" />
             </Link>
           </div>}
@@ -75,8 +81,7 @@ export function About({ full = false }: { full?: boolean }) {
               Historical roles <span aria-hidden="true">+</span>
             </summary>
             <p className="evidence-note">
-              Project roles recorded in the résumé. These are historical labels;
-              periods are omitted where exact dates are not established.
+              My role on each project.
             </p>
             {experience.map((item) => (
               <div className="credential-row" key={item.name}>
@@ -94,7 +99,37 @@ export function About({ full = false }: { full?: boolean }) {
   );
 }
 
-export function Credentials() {
+export function Education() {
+  return (
+    <section className="section shell credentials-section" id="education">
+      <SectionHeading
+        number="01"
+        eyebrow="Education"
+        title={siteContent.education.title}
+        description={siteContent.education.description}
+      />
+      <div className="credential-list">
+        {education.map((item) => (
+          <div className="credential-row" key={item.degree}>
+            <div>
+              <h3>{item.degree}</h3>
+              <p>{item.institution}</p>
+              {item.highlights && (
+                <span className="credential-id">{item.highlights.join(" · ")}</span>
+              )}
+            </div>
+            <div className="credential-aside">
+              <span className="credential-date">{item.period}</span>
+              {item.detail && <span className="credential-date">{item.detail}</span>}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export function Credentials({ number = "04" }: { number?: string }) {
   const featured = credentials.filter((item) => item.featured);
   const additional = credentials.filter((item) => !item.featured);
   function rows(items: typeof credentials) {
@@ -132,7 +167,7 @@ export function Credentials() {
   return (
     <section className="section shell credentials-section" id="credentials">
       <SectionHeading
-        number="02"
+        number={number}
         eyebrow="Continued learning"
         title={siteContent.credentials.title}
         description={siteContent.credentials.description}

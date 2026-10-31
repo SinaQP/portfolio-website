@@ -33,11 +33,11 @@ const records: ProjectRecord[] = [
       "The public companion separates an HTTP client, authentication, task and performance services, and a small MCP interface. It connects to the existing Rahtal API as an independent application, with tokens kept in process memory and response errors translated at the boundary.",
     technology: ["Python", "HTTPX", "REST APIs", "MCP", "Django", "React"],
     contribution:
-      "My résumé records full-stack and data-related work on Rahtal. The public companion provides implementation evidence for explicit service boundaries, authenticated API access, and focused tests around task retrieval and performance submission.",
+      "I worked on Rahtal in a full-stack role with data-related responsibilities. My public integration companion shows the same engineering concerns in code: explicit service boundaries, authenticated API access, and focused tests around task retrieval and performance submission.",
     challenges:
       "An expired session, malformed response, and an unavailable server need different handling. Performance submission also introduces ambiguity when a network failure follows a write, so the integration deliberately avoids automatically retrying an uncertain submission.",
     lessons:
-      "The companion makes a useful integration principle visible: handling a failed read and an uncertain write are different responsibilities. This is an observation from the implementation, rather than a claimed business outcome.",
+      "A failed read and an uncertain write are different responsibilities, and an integration should treat them differently: a read can simply be retried, while a write that may already have happened needs a deliberate decision.",
     image: "/Rahtal-project.png",
     links: [
       {
@@ -52,7 +52,7 @@ const records: ProjectRecord[] = [
       "Enterprise workflows",
     ],
     evidenceNote:
-      "The public source covers the standalone integration companion. It is a focused view into the wider Rahtal platform; the diagram illustrates that integration boundary.",
+      "The Rahtal platform itself is a private company system. The public source is my standalone integration companion, and the diagram shows that integration boundary.",
   },
   {
     slug: "danobin",
@@ -62,18 +62,18 @@ const records: ProjectRecord[] = [
     summary:
       "CTO experience, connecting startup responsibility with hands-on work on the product's core services.",
     overview:
-      "Danobin was a startup where I served as CTO. Its project history spans product exploration, shared domain documentation, a core service, and a collaborative infographic interface. It represents a broader responsibility in my journey than an isolated implementation role.",
+      "Danobin was a startup where I served as CTO, combining technical direction with hands-on work on the core product. The work spanned product exploration, shared domain documentation, a core service, and a collaborative infographic interface.",
     problem:
-      "A developing product needs its account, subscription, and credit behavior to stay coherent as features change. The core code records that problem in concrete terms: plan changes, recurring credit updates, and communication with users.",
+      "A developing product needs its account, subscription, and credit behavior to stay coherent as features change: plan changes, recurring credit updates, and communication with users all have to agree.",
     architecture:
-      "The inspected core implementation uses Django modules for users, subscriptions, and credits, with background tasks and a shared email service. A separate Next.js interface appears in the collaborative project files. These are observed components, not a verified production deployment topology.",
+      "The core service uses Django modules for users, subscriptions, and credits, with background tasks and a shared email service, alongside a separate Next.js interface.",
     technology: ["Python", "Django", "Background tasks", "Next.js", "React"],
     contribution:
-      "Alongside my CTO role, commits under my name and email record work on subscription-plan changes and credit management, a domain-event list, and an email service with templates, asynchronous tasks, and tests. The available history supports those contributions; the wider team's work is not attributed to me alone.",
+      "Alongside the CTO role, I implemented subscription-plan changes and credit management, documented the product's domain events, and built an email service with templates, asynchronous tasks, and tests.",
     challenges:
       "Subscription changes affect credit allocation and scheduled work. Email delivery introduces a separate failure boundary. These concerns require coordination across the product's core behavior, beyond a single screen or endpoint.",
     lessons:
-      "This account connects a verified leadership role with identifiable implementation work. The specific strategic decisions I owned, how the team worked, and the outcomes of those decisions still need a fuller first-person account.",
+      "The CTO role joined two kinds of work: deciding how the product's core should behave, and building those parts myself.",
     links: [],
     architectureNodes: [
       "Product workflows",
@@ -82,7 +82,7 @@ const records: ProjectRecord[] = [
       "Background services",
     ],
     evidenceNote:
-      "CTO is recorded in my résumé. Implementation evidence comes from local Danobin project history. The requested organization repositories were not accessible publicly during review; the diagram shows component responsibilities only.",
+      "Danobin's repositories are private; the diagram shows component responsibilities.",
   },
   {
     slug: "zaraamad",
@@ -108,11 +108,11 @@ const records: ProjectRecord[] = [
       "Docker",
     ],
     contribution:
-      "My résumé records a Full-stack Developer role on Zaraamad. The related public repositories include customer and service modules, database migrations, ownership-aware ticket workflows, and operational scripts for inspecting and moving data between systems.",
+      "I worked on Zaraamad as a full-stack developer. The related public repositories include customer and service modules, database migrations, ownership-aware ticket workflows, and operational scripts for inspecting and moving data between systems.",
     challenges:
       "The portal verifies Django-issued JWTs while serving its own FastAPI endpoints, making compatibility at the authentication boundary explicit. Customer-specific configuration, remote bridge availability, and partial failures across multiple databases add another layer of engineering beyond a single application database.",
     lessons:
-      "These repositories illustrate why domain rules and integration boundaries need to remain inspectable. They establish implementation structure, not measured improvements in reliability or delivery speed.",
+      "When one system spans many customer databases and existing services, domain rules and integration boundaries have to stay explicit and inspectable.",
     image: "/Zaraamad-project.png",
     links: [
       {
@@ -135,7 +135,7 @@ const records: ProjectRecord[] = [
       "Customer databases",
     ],
     evidenceNote:
-      "This overview draws on the public portal, support, and query-runner repositories. The diagram is a conceptual view of their responsibilities, not a production deployment map.",
+      "Based on the public portal, support, and query-runner repositories; the diagram is a conceptual view of their responsibilities.",
   },
   {
     slug: "zarvand",
@@ -159,11 +159,11 @@ const records: ProjectRecord[] = [
       "Sass",
     ],
     contribution:
-      "My résumé records my role as Frontend Developer on Zarvand. The public demonstration contains domain API modules, session handling, and billing flows; those repository features should not be read as a claim that I alone designed or implemented every part.",
+      "I worked on Zarvand as a frontend developer. The public demonstration contains the interface's domain API modules, session handling, and billing flows.",
     challenges:
       "A bill's status, the account dashboard, and the transaction view need to tell the same story after an interaction. The demonstration layer also needs to preserve believable state across refreshes while keeping its data source replaceable at the existing API boundary.",
     lessons:
-      "The demonstration shows how separating data access from presentation supports inspection of a product workflow. Its simulated payments do not establish production transaction behavior.",
+      "Separating data access from presentation makes a product workflow easy to demonstrate and inspect; in the demo, simulated payments stand in for the real payment provider.",
     image: "/Zarvand-project.png",
     links: [
       {
@@ -182,7 +182,7 @@ const records: ProjectRecord[] = [
       "Account workflows",
     ],
     evidenceNote:
-      "The public repository includes a demonstration mode with local data and simulated payments. It illustrates the frontend workflows and does not establish production payment-processing behavior.",
+      "The public repository runs in a demonstration mode with local data and simulated payments.",
   },
   {
     slug: "tireban",
@@ -196,14 +196,14 @@ const records: ProjectRecord[] = [
     problem:
       "The current condition of a tire is only one part of an operational decision; its inspection and maintenance history matters too. The product's purpose is to give those events a connected view instead of leaving each observation isolated from the asset's lifecycle.",
     architecture:
-      "At the product level, Tireban can be understood through the relationship between vehicles, tires, lifecycle events, and fleet-level views. The diagram describes that domain model; implementation and deployment details are not publicly documented here.",
+      "Tireban is organized around the relationship between vehicles, tires, lifecycle events, and fleet-level views; the diagram shows that domain model.",
     technology: [],
     contribution:
-      "My résumé records my role as Frontend Developer on Tireban. The product scope is documented in my previous portfolio; the specific features I owned and their implementation details are not established by the available public evidence.",
+      "I worked on Tireban as a frontend developer on the product's web interface.",
     challenges:
       "This domain connects events recorded over time to assets that move through inspections, maintenance, and replacement. The important product question is how to preserve that history while making the present state of an individual tire and the wider fleet easy to understand.",
     lessons:
-      "The product invites an engineering question: how should an asset's current state remain connected to its history? Specific implementation lessons need a fuller account of the work before they can be attributed to me.",
+      "The central design question is how an asset's current state stays connected to its history.",
     image: "/Tierban-project.png",
     links: [],
     architectureNodes: [
@@ -213,13 +213,13 @@ const records: ProjectRecord[] = [
       "Operational views",
     ],
     evidenceNote:
-      "Product scope comes from my existing portfolio. The implementation is not publicly documented, so this case study keeps the architecture conceptual and makes no performance or business-impact claims.",
+      "Tireban is a private company product, so this case study stays at the level of the product and its domain model.",
   },
   {
     slug: "svm-vs-qsvm",
     number: "05",
     name: "SVM vs. QSVM",
-    category: "Research experiment · Quantum computing",
+    category: "Independent research · Quantum computing",
     summary:
       "Comparing classical and quantum kernels through reproducible experiments, explicit baselines, and measured computational cost.",
     overview:
@@ -260,7 +260,7 @@ const records: ProjectRecord[] = [
       "Results & diagnostics",
     ],
     evidenceNote:
-      "An exploratory simulator study, not a hardware benchmark or clinical application. Five overlapping splits and earlier feature-map selection limit inference; the report documents those limitations explicitly.",
+      "Submitted to a journal; not accepted. A simulator study, not a hardware benchmark or clinical application. Five overlapping splits and earlier feature-map selection limit inference; the report documents those limitations explicitly.",
   },
 ];
 
@@ -280,7 +280,7 @@ const roles: Record<string, string> = {
   zaraamad: "Full-stack Developer",
   zarvand: "Frontend Developer",
   tireban: "Frontend Developer",
-  "svm-vs-qsvm": "Independent computing exploration",
+  "svm-vs-qsvm": "Independent research",
 };
 export const projects: CaseStudy[] = records.map((record, index) => ({
   ...record,

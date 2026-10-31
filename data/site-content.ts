@@ -1,5 +1,5 @@
 export const siteContent = {
-  implementationUnavailable: "The implementation stack is not established by the available project documentation.",
+  implementationUnavailable: "A private company product; its source and stack are not public.",
   navigation: [
     { label: "Work", href: "/work" },
     { label: "Research", href: "/research" },
@@ -19,7 +19,7 @@ export const siteContent = {
       "Organizational platforms, startup responsibility, and operational products.",
     pageTitle: "Building real systems.",
     pageDescription:
-      "Five accounts of professional work, with the available evidence and the limits of each account.",
+      "Professional work across enterprise platforms, municipal services, operational products, and a startup.",
   },
   journey: {
     title: "A wider responsibility. A deeper question.",
@@ -30,6 +30,11 @@ export const siteContent = {
     title: "Across the system.",
     description:
       "Engineering domains first. Languages and frameworks are tools within them.",
+  },
+  education: {
+    title: "Grounded in study.",
+    description:
+      "A computer engineering degree in progress, alongside professional work.",
   },
   about: {
     eyebrow: "About / Sina Qasempour",
@@ -50,7 +55,7 @@ export const siteContent = {
   credentials: {
     title: "Study alongside practice.",
     description:
-      "Computing, mathematics, and communication. Coursera-backed records link directly to their accomplishment pages; the EF SET record is listed separately without a stored verification URL.",
+      "Computing, mathematics, and communication. Coursera records link to their verification pages.",
   },
   circuit: {
     title: "Hadamard transformations of a single qubit",

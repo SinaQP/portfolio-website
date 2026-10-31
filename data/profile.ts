@@ -10,7 +10,7 @@ export const profile = {
     "Exploring the future of computing.",
   ],
   introduction:
-    "Six years of turning technical problems into working systems — across production software, startup leadership, and current exploration in Quantum Computing.",
+    "Software engineer and computer engineering student. Six years of turning technical problems into working systems — across production software, startup leadership, and research in Quantum Computing.",
   source: "User brief; résumé; user positioning update, September 2026",
   about: {
     summary: "I build real-world systems and explore the ideas beneath them. Six years in software, enterprise platforms, and startup leadership have shaped my practice. Today, that curiosity also leads me into Quantum Computing.",

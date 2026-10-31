@@ -10,7 +10,7 @@ export const experience = [
     name: "Rahtal",
     role: "Full-stack Developer / Data Scientist / AI Engineer",
     period: null,
-    context: "Historical project role, as recorded in the résumé",
+    context: "Enterprise work and performance management",
     source: "Résumé, project section",
   },
   {

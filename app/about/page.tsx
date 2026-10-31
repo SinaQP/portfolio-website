@@ -1,4 +1,4 @@
-import { About, Credentials } from "@/components/engineering/about";
+import { About, Credentials, Education } from "@/components/engineering/about";
 import { Stack } from "@/components/engineering/stack";
 import { Journey } from "@/components/engineering/journey";
 import { PageIntro } from "@/components/engineering/section-heading";
@@ -18,6 +18,7 @@ export default function AboutPage() {
         description={siteContent.about.description}
       />
       <About full />
+      <Education />
       <Journey />
       <Stack />
       <Credentials />
