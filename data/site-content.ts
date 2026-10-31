@@ -6,11 +6,30 @@ export const siteContent = {
     { label: "About", href: "/about" },
   ],
   hero: {
-    eyebrow: "Sina Qasempour",
-    figureTitle: "COMPUTATIONAL FORMS",
-    figureNumber: "FIG. 001",
-    figureCaption: "Simple rules. Complex possibilities.",
-    bottom: "BUILDING SYSTEMS. STUDYING COMPUTATION.",
+    status: "Software engineer · open to graduate research",
+    headline: { before: "I build the software", accent: "real institutions", after: "run on." },
+    line: "Six years of backend and data systems. Next: quantum computing research.",
+    proofs: [
+      {
+        tag: "Open source · Live demo",
+        title: "SageQL",
+        text: "Text-to-SQL where the AI never writes SQL.",
+        href: "https://sinaqp.github.io/SageQL/",
+      },
+      {
+        tag: "Production systems",
+        title: "Municipal revenue platform",
+        text: "Duty subsystems and bill search I built.",
+        href: "/work/zaraamad",
+      },
+      {
+        tag: "Research",
+        title: "Quantum vs. classical kernels",
+        text: "Submitted to Machine Learning: Science and Technology.",
+        href: "/research",
+      },
+    ],
+    bottom: "Selected work",
   },
   work: {
     eyebrow: "01 / Engineering work",

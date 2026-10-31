@@ -1,0 +1,145 @@
+/* The first screen: who, one claim, one line, and three pieces of evidence. */
+.hero {
+  position: relative;
+  isolation: isolate;
+  min-height: min(720px, calc(100svh - 82px));
+  display: flex;
+  flex-direction: column;
+  overflow: clip;
+  border-bottom: 1px solid var(--line);
+}
+.grid {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background-image:
+    linear-gradient(#6e8b7e0a 1px, transparent 1px),
+    linear-gradient(90deg, #6e8b7e0a 1px, transparent 1px);
+  background-size: 65px 65px;
+  mask-image: radial-gradient(ellipse at 72% 45%, black, transparent 70%);
+}
+.content {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 72px;
+  padding-block: 56px;
+}
+.who {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+.portrait {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  filter: grayscale(1);
+  border: 1px solid var(--line);
+}
+.whoText {
+  font: 500 11px/1.7 var(--font-code);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.whoText strong {
+  color: var(--text);
+  font-weight: 500;
+}
+.dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-right: 8px;
+  box-shadow: 0 0 0 4px #a5cebc26;
+}
+.headline {
+  font-size: clamp(42px, 5.4vw, 74px);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+.headline em {
+  font-style: normal;
+  color: var(--accent);
+}
+.line {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 24px 0 32px;
+  max-width: 520px;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.proofs {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+}
+.proof {
+  display: grid;
+  grid-template-columns: 1fr 18px;
+  align-items: center;
+  gap: 14px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+  transition: padding 0.2s;
+}
+.proof:hover {
+  padding-left: 10px;
+}
+.proof:hover h2 {
+  color: var(--accent);
+}
+.tag {
+  display: block;
+  font: 500 10px var(--font-code);
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.proof h2 {
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin: 0 0 4px;
+  transition: color 0.2s;
+}
+.proof p {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 0;
+}
+.arrow {
+  color: var(--faint);
+}
+
+@media (max-width: 900px) {
+  .hero {
+    min-height: auto;
+  }
+  .content {
+    grid-template-columns: 1fr;
+    gap: 44px;
+    padding-block: 40px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .proof {
+    transition: none;
+  }
+}
