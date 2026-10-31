@@ -8,6 +8,8 @@ export const metadata: Metadata = {
     "An interactive presentation of Sina Qasempour’s engineering work, technical leadership, selected systems, continuous study, and exploration of advanced computing.",
     "/presentation",
   ),
+  // Private: reachable by URL, but not linked, listed in the sitemap or indexed.
+  robots: { index: false, follow: false },
   alternates: {
     canonical: "/presentation",
     languages: { en: "/presentation", "fa-IR": "/presentation/fa" },

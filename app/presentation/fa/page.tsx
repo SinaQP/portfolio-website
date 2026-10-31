@@ -15,6 +15,8 @@ export const metadata: Metadata = {
     "روایتی تعاملی از مسیر مهندسی سینا قاسم‌پور؛ از ساخت سیستم‌های واقعی و مسئولیت فنی تا یادگیری پیوسته و مطالعه‌ی محاسبات پیشرفته.",
     "/presentation/fa",
   ),
+  // Private: reachable by URL, but not linked, listed in the sitemap or indexed.
+  robots: { index: false, follow: false },
   alternates: {
     canonical: "/presentation/fa",
     languages: { en: "/presentation", "fa-IR": "/presentation/fa" },

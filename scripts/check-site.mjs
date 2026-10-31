@@ -27,6 +27,9 @@ const routes = [
   "/work/tireban",
   "/research/svm-vs-qsvm",
 ];
+// Reachable by URL for the owner, but never linked from navigation, listed in
+// the sitemap or indexed.
+const privateRoutes = new Set(["/presentation", "/presentation/fa"]);
 const resumePath = "/Sina-Qasempour-Resume.pdf";
 const localLinks = new Set();
 let fragmentCount = 0;
@@ -170,11 +173,22 @@ async function checkPage(route) {
     `${route}: social URL must match the canonical`,
   );
   const robots = meta.find((item) => item.name === "robots")?.content || "";
-  assert.doesNotMatch(
-    robots,
-    /\bnoindex\b/i,
-    `${route}: public page is noindex`,
-  );
+  if (privateRoutes.has(route)) {
+    assert.match(robots, /\bnoindex\b/i, `${route}: private page must be noindex`);
+  } else {
+    assert.doesNotMatch(
+      robots,
+      /\bnoindex\b/i,
+      `${route}: public page is noindex`,
+    );
+  }
+  const navigation = html.match(/<header\b[\s\S]*?<\/header>/i)?.[0] || "";
+  for (const hidden of privateRoutes) {
+    assert.ok(
+      !navigation.includes(`href="${hidden}"`),
+      `${route}: header links to private ${hidden}`,
+    );
+  }
 
   const documentUrl = new URL(route, testUrl);
   const targets = new Set(
@@ -217,10 +231,12 @@ async function main() {
     ),
   );
   for (const route of routes) {
-    assert.ok(
-      locations.has(new URL(route, canonicalUrl).href),
-      `Sitemap omits ${route}`,
-    );
+    const listed = locations.has(new URL(route, canonicalUrl).href);
+    if (privateRoutes.has(route)) {
+      assert.ok(!listed, `Sitemap lists private ${route}`);
+    } else {
+      assert.ok(listed, `Sitemap omits ${route}`);
+    }
   }
   const robots = await (await request("/robots.txt")).text();
   assert.ok(
