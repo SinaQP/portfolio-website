@@ -8,7 +8,7 @@ export const experience = [
   },
   {
     name: "Rahtal",
-    role: "Project lead / Data Scientist / Full-stack Developer",
+    role: "Full-stack Developer · Project manager since 2026",
     period: null,
     context: "Enterprise work and performance management",
     source: "Résumé, project section",
@@ -19,6 +19,13 @@ export const experience = [
     period: null,
     context: "Municipal payment and management systems",
     source: "Résumé, project section",
+  },
+  {
+    name: "Zaravand Portal",
+    role: "Backend Developer (built from scratch)",
+    period: null,
+    context: "Central customer and service platform",
+    source: "zaraamad-portal-be git history; Sina, 4 November 2026",
   },
   {
     name: "Zarvand",

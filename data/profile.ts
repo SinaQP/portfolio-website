@@ -130,7 +130,7 @@ export const stack = [
   {
     name: "Infrastructure",
     note: "The environment in which software operates.",
-    items: ["Linux", "Docker", "Kubernetes", "CI/CD"],
+    items: ["Linux", "Docker", "CI/CD"],
   },
   {
     name: "Software",

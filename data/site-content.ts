@@ -21,7 +21,7 @@ export const siteContent = {
       {
         tag: "Production systems",
         title: "Municipal revenue platform",
-        text: "Duty subsystems and bill search I built.",
+        text: "50+ municipalities, 84,000+ bills a year. I built its billing engine.",
         href: "/work/zaraamad",
       },
       {

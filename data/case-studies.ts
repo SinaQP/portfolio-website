@@ -22,18 +22,18 @@ const records: ProjectRecord[] = [
     slug: "rahtal",
     number: "01",
     name: "Rahtal",
-    category: "Enterprise systems · Project leadership",
+    category: "Enterprise systems · Full-stack and project management",
     summary:
       "Connecting organizational work, priorities, and performance through software that fits the way teams operate.",
     overview:
-      "Rahtal is an enterprise management platform concerned with organizational alignment, priorities, and day-to-day work. I lead the project day to day: I work with the product owner, hold the overall design, and run the meetings where we decide which features to add and how.",
+      "Rahtal is an enterprise management platform concerned with organizational alignment, priorities, and day-to-day work. I worked on it for a long time as a full-stack developer, and since October 2026 I also manage the project: I work with the product owner, hold the overall design, and run the meetings where we decide which features to add and how.",
     problem:
       "Enterprise workflows rarely stop at one interface: people need to find their tasks, understand context, and record work through connected tools. That integration must respect the existing API contract, authentication lifecycle, and the difference between a safe read and a consequential write.",
     architecture:
       "The public companion separates an HTTP client, authentication, task and performance services, and a small MCP interface. It connects to the existing Rahtal API as an independent application, with tokens kept in process memory and response errors translated at the boundary.",
     technology: ["Python", "HTTPX", "REST APIs", "MCP", "Django", "React"],
     contribution:
-      "Besides leading the project, I am its data scientist and work on it as a full-stack developer. I also design the AI features planned for Rahtal: SageQL, my open-source reporting SDK, is one of the products we plan to build into it, and my public integration companion is version 0.1 of an in-product agent. The companion shows the engineering concerns in code: explicit service boundaries, authenticated API access, and focused tests around task retrieval and performance submission.",
+      "Besides managing the project, I keep working on it as a full-stack developer. I also design the AI features planned for Rahtal: SageQL, my open-source reporting SDK, is one of the products we plan to build into it, and my public integration companion is version 0.1 of an in-product agent. The companion shows the engineering concerns in code: explicit service boundaries, authenticated API access, and focused tests around task retrieval and performance submission.",
     challenges:
       "An expired session, malformed response, and an unavailable server need different handling. Performance submission also introduces ambiguity when a network failure follows a write, so the integration deliberately avoids automatically retrying an uncertain submission.",
     lessons:
@@ -88,37 +88,32 @@ const records: ProjectRecord[] = [
     slug: "zaraamad",
     number: "02",
     name: "Zaraamad",
-    category: "Organizational systems · Integration",
+    category: "Municipal revenue platform · Backend",
     summary:
-      "A connected backend for customer operations, municipal services, pricing, and support across existing systems.",
+      "The revenue office of a municipality, as software: used by 50+ municipalities, with more than 84,000 bills issued in a year.",
     overview:
-      "Zaraamad brings together organizational and municipal service workflows, including service configuration, customer operations, and revenue-related information. Its public backend repositories show both the application domain and the operational tools needed to work with distributed customer databases.",
+      "Zaraamad is the revenue office of an Iranian municipality, as software. Staff open case files for shops, properties, building permits, vehicles and burials, calculate each year's duty with that city's own rules, issue barcoded bills, and collect payment at the counter, online or through the bank. Zaravand runs one install per city; more than 50 municipalities use it, and in Iranian year 1404 the cities reporting to the central portal issued more than 84,000 bills.",
     problem:
-      "Customer-specific services, pricing, subscriptions, and support cannot be treated as unrelated records. The backend also has to coexist with established authentication and database systems while keeping access rules and changing business requirements understandable.",
+      "Every municipality calculates its duties with its own formula, and the formulas change from year to year. Bills are legal and financial records, so a change for one city must never move another city's amounts, and staff need to see exactly why a bill came out at a given value.",
     architecture:
-      "The portal uses FastAPI modules with explicit controllers, services, schemas, and data mappings over SQLAlchemy and PostgreSQL. Separate bridge clients connect existing services, while Django support tooling routes connections to city databases and a Python query runner produces reports across SQL Server instances.",
+      "A Django and Django REST Framework backend. Duty calculation sits behind an abstract billing formula with one plugin per city and a dynamic data schema for city-specific inputs, so a new city does not change shared code. Bank statements enter through a reconciliation module; Django support tooling routes connections to each city's database, and a Python query runner produces reports across SQL Server instances.",
     technology: [
       "Python",
-      "FastAPI",
       "Django",
+      "Django REST Framework",
       "PostgreSQL",
       "SQL Server",
-      "SQLAlchemy",
-      "Alembic",
+      "pytest",
       "Docker",
     ],
     contribution:
-      "I built several of Zaraamad's municipal revenue subsystems: trade duties for union and non-union businesses, transferred-income duties, and the general \"Other\" subsystem, which accepts any type of municipal duty, calculates it, and issues the bill to the citizen. I also built search across the very large volume of citizens' bills in these subsystems. About three quarters of the commits in each of these subsystems are mine, from June 2023 to September 2026.",
+      "I am the top contributor to the backend, with 40% of all commits (2023–2026). I built the business-duty subsystem, the platform's largest revenue module, and its tariff-driven billing engine, with a step-by-step debug view of each bill's calculation. I built bank reconciliation, which reads the bank's payment files, matches every payment to a bill and sorts mismatches into seven states that staff can fix in bulk. I wrote the burial subsystem on my own, built the general-income, non-union trade and transferred-income subsystems, and made bill search and reports faster by removing N+1 queries and adding batching and caching.",
     challenges:
-      "The portal verifies Django-issued JWTs while serving its own FastAPI endpoints, making compatibility at the authentication boundary explicit. Customer-specific configuration, remote bridge availability, and partial failures across multiple databases add another layer of engineering beyond a single application database.",
+      "Formulas depend on many inputs: tariff tables, location grades, job coefficients and debts from earlier years. I covered each city's rules with characterization tests before changing them, so a refactor could prove that existing bills kept their amounts.",
     lessons:
-      "Each kind of municipal duty has its own rules, but citizens and staff need them to behave consistently; a general subsystem for any duty type only works when those rules stay explicit and inspectable.",
+      "When every customer has its own rules, the rules should become plugins with their own tests, and the shared code should only know the contract between them.",
     image: "/Zaraamad-project.png",
     links: [
-      {
-        label: "Portal backend",
-        url: "https://github.com/SinaQP/zaraamad-portal-be",
-      },
       {
         label: "Database tooling",
         url: "https://github.com/SinaQP/ZaraamadQueryRunner",
@@ -129,13 +124,57 @@ const records: ProjectRecord[] = [
       },
     ],
     architectureNodes: [
-      "Portal & support",
-      "Domain services",
-      "Integration bridges",
-      "Customer databases",
+      "Case files",
+      "City formula plugins",
+      "Bills & payments",
+      "Bank reconciliation",
     ],
     evidenceNote:
-      "The main Zaraamad backend is a private company system; the linked portal, support, and query-runner repositories are public parts of it. The diagram is a conceptual view of their responsibilities.",
+      "The main Zaraamad backend is a private company system. Contribution figures come from its git history; the linked support and query-runner repositories are public parts of the platform.",
+  },
+  {
+    slug: "zaravand-portal",
+    number: "03",
+    name: "Zaravand Portal",
+    category: "Platform backend · Built from scratch",
+    summary:
+      "The central place where Zaravand manages its municipality customers: services, prices, subscriptions, tickets and income reports.",
+    overview:
+      "Zaravand sells Zaraamad to municipalities and runs one install per city. The portal is where the company manages those customers: who they are, which services they buy and at what price, their subscriptions, their support tickets and their income reports. It serves 56 active municipalities and several other organisations.",
+    problem:
+      "More than fifty separately deployed city installs, each with its own address and version, have to be managed from one place. Subscription data must stay correct when a city is offline, and each city's revenue figures have to be collected into one consistent picture.",
+    architecture:
+      "FastAPI modules with explicit controllers, services and schemas over SQLAlchemy 2, Alembic and PostgreSQL. Bridge clients run health and capability checks against each city's Zaraamad install and manage subscriptions remotely; read-only SQL Server connections collect each city's income summaries.",
+    technology: [
+      "Python",
+      "FastAPI",
+      "SQLAlchemy",
+      "Alembic",
+      "PostgreSQL",
+      "Pydantic",
+      "SQL Server",
+      "pytest",
+    ],
+    contribution:
+      "I started the repository and built the backend from scratch: by release 1.5.0, about ten weeks later, I had written 89% of its code, with 177 tests. That covers customers and users, the service catalog and per-customer pricing, SMS one-time-password login with verification of Django-issued tokens, the ticket workflow, the bridge to city installs, and the import of every city's income reports through a tool that runs one query against all city databases. I also built several frontend screens.",
+    challenges:
+      "Each city install can be unreachable or on a different version, so the bridge checks capabilities first, caches subscription lookups and keeps a failure in one city from affecting the others.",
+    lessons:
+      "A central system over many independent installs has to treat every remote call as something that can fail, and make that failure visible instead of hiding it.",
+    links: [
+      {
+        label: "Portal backend",
+        url: "https://github.com/SinaQP/zaraamad-portal-be",
+      },
+    ],
+    architectureNodes: [
+      "Customers & pricing",
+      "Tickets & sign-in",
+      "City bridge",
+      "Income reports",
+    ],
+    evidenceNote:
+      "Code share is from the original git history up to release 1.5.0; a later re-import into a fresh history credits a teammate in current blame.",
   },
   {
     slug: "zarvand",
@@ -275,7 +314,8 @@ export type CaseStudy = ProjectRecord & {
   featured: boolean;
 };
 const roles: Record<string, string> = {
-  rahtal: "Project lead · Data scientist · Full-stack",
+  rahtal: "Full-stack Developer · Project manager since 2026",
+  "zaravand-portal": "Backend Developer · built from scratch",
   danobin: "CTO",
   zaraamad: "Full-stack Developer",
   zarvand: "Frontend Developer",
