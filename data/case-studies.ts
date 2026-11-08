@@ -88,7 +88,7 @@ const records: ProjectRecord[] = [
     slug: "zaraamad",
     number: "02",
     name: "Zaraamad",
-    category: "Municipal revenue platform · Backend",
+    category: "Municipal revenue platform · Full-stack",
     summary:
       "The revenue office of a municipality, as software: used by 50+ municipalities, with more than 84,000 bills issued in a year.",
     overview:
@@ -107,7 +107,7 @@ const records: ProjectRecord[] = [
       "Docker",
     ],
     contribution:
-      "I am the top contributor to the backend, with 40% of all commits (2023–2026). I built the business-duty subsystem, the platform's largest revenue module, and its tariff-driven billing engine, with a step-by-step debug view of each bill's calculation. I built bank reconciliation, which reads the bank's payment files, matches every payment to a bill and sorts mismatches into seven states that staff can fix in bulk. I wrote the burial subsystem on my own, built the general-income, non-union trade and transferred-income subsystems, and made bill search and reports faster by removing N+1 queries and adding batching and caching.",
+      "I worked on it full stack and am its top contributor across frontend and backend, with 36% of all commits (41% of the backend, 23% of the frontend), from 2023 to 2026. I built the business-duty subsystem, the platform's largest revenue module, and its tariff-driven billing engine, with a step-by-step debug view of each bill's calculation. I built bank reconciliation, which reads the bank's payment files, matches every payment to a bill and sorts mismatches into seven states that staff can fix in bulk. I wrote the burial subsystem on my own, built the general-income, non-union trade and transferred-income subsystems, and made bill search and reports faster by removing N+1 queries and adding batching and caching.",
     challenges:
       "Formulas depend on many inputs: tariff tables, location grades, job coefficients and debts from earlier years. I covered each city's rules with characterization tests before changing them, so a refactor could prove that existing bills kept their amounts.",
     lessons:
